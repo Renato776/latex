@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.8.6)  10 AUG 2020 02:36
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.8.6)  10 AUG 2020 03:43
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -141,18 +141,18 @@ LaTeX Info: Redefining \% on input line 6.
 )
 \openout1 = `article.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 27.
+LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 27.
+LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 27.
+LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 27.
+LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 27.
+LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 27.
+LaTeX Font Info:    ... okay on input line 27.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -248,19 +248,20 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-LaTeX Info: Redefining \. on input line 23.
-LaTeX Info: Redefining \% on input line 23.
+LaTeX Info: Redefining \. on input line 27.
+LaTeX Info: Redefining \% on input line 27.
+
+(/home/renato/latex/caratula/caratula.tex
 </home/renato/latex/caratula/logo.png, id=1, 501.875pt x 501.875pt>
 File: /home/renato/latex/caratula/logo.png Graphic file (type png)
 <use /home/renato/latex/caratula/logo.png>
 Package pdftex.def Info: /home/renato/latex/caratula/logo.png  used on input li
-ne 27.
+ne 3.
 (pdftex.def)             Requested size: 75.06953pt x 75.06357pt.
-
-[1
+ [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} </home/renato/latex/caratul
-a/logo.png>] (./article.toc
+a/logo.png>]) (./article.toc
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
 LaTeX Font Info:    External font `cmex10' loaded for size
@@ -271,7 +272,53 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 \tf@toc=\write3
 \openout3 = `article.toc'.
 
- [1]
+
+[1]
+
+Package blindtext Warning: spanish not defined, using English instead.
+(blindtext)                 on input line 36.
+
+
+Package blindtext Warning: spanish not defined, using English instead.
+(blindtext)                 on input line 38.
+
+
+Package blindtext Warning: spanish not defined, using English instead.
+(blindtext)                 on input line 39.
+
+
+Package blindtext Warning: spanish not defined, using English instead.
+(blindtext)                 on input line 40.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 39--40
+
+ []
+
+
+Package blindtext Warning: spanish not defined, using English instead.
+(blindtext)                 on input line 42.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 40--42
+
+ []
+
+
+Package blindtext Warning: spanish not defined, using English instead.
+(blindtext)                 on input line 44.
+
+
+Package blindtext Warning: spanish not defined, using English instead.
+(blindtext)                 on input line 46.
+
+[2
+
+]
+
+Package blindtext Warning: spanish not defined, using English instead.
+(blindtext)                 on input line 48.
+
 
 Package blindtext Warning: spanish not defined, using English instead.
 (blindtext)                 on input line 50.
@@ -282,62 +329,17 @@ Package blindtext Warning: spanish not defined, using English instead.
 
 
 Package blindtext Warning: spanish not defined, using English instead.
-(blindtext)                 on input line 53.
-
-
-Package blindtext Warning: spanish not defined, using English instead.
 (blindtext)                 on input line 54.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 53--54
-
- []
-
-
-Package blindtext Warning: spanish not defined, using English instead.
-(blindtext)                 on input line 56.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 54--56
-
- []
-
-
-Package blindtext Warning: spanish not defined, using English instead.
-(blindtext)                 on input line 58.
-
-
-Package blindtext Warning: spanish not defined, using English instead.
-(blindtext)                 on input line 60.
-
-[2
-
-]
-
-Package blindtext Warning: spanish not defined, using English instead.
-(blindtext)                 on input line 62.
-
-
-Package blindtext Warning: spanish not defined, using English instead.
-(blindtext)                 on input line 64.
-
-
-Package blindtext Warning: spanish not defined, using English instead.
-(blindtext)                 on input line 66.
-
-
-Package blindtext Warning: spanish not defined, using English instead.
-(blindtext)                 on input line 68.
 
 [3] (./article.aux
 LaTeX Info: Redefining \. on input line 6.
 LaTeX Info: Redefining \% on input line 6.
 ) ) 
 Here is how much of TeX's memory you used:
- 3296 strings out of 492609
- 46489 string characters out of 6131463
- 133854 words of memory out of 5000000
- 7185 multiletter control sequences out of 15000+600000
+ 3304 strings out of 492609
+ 46614 string characters out of 6131463
+ 134010 words of memory out of 5000000
+ 7190 multiletter control sequences out of 15000+600000
  6667 words of font info for 24 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  41i,4n,31p,274b,359s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -346,7 +348,7 @@ sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/sha
 re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/te
 xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/t
 exmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb>
-Output written on article.pdf (4 pages, 315451 bytes).
+Output written on article.pdf (4 pages, 315556 bytes).
 PDF statistics:
  40 PDF objects out of 1000 (max. 8388607)
  26 compressed objects within 1 object stream

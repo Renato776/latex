@@ -1,0 +1,4 @@
+#!/usr/bin/sh -
+cp /home/renato/latex/escape-text.js /usr/local/bin/escape-text
+echo "escape text scpript successfully deployed to: /usr/local/bin"
+#I replaced it!!

@@ -16,8 +16,16 @@
   {1em}
   {}
 
+%------------------------------ Constants ---------------------------------
+\newcommand{\nombre}{Renato Flores}
+\newcommand{\carnet}{201709244}
+\newcommand{\universidad}{USAC}
+\newcommand{\catedratico}{Ing. Otto Salazar}
+\newcommand{\curso}{Auditoria y Revision de Redes 1}
+\newcommand{\titulo}{Tarea - 1}
+%----------------------- Custom commands ------------------------------
 \newcommand*\rbreak{\par\noindent\linebreak}
-%% ------------------------------ Code highliting style specification -----------------
+%% ----- Code highliting style specification -----------------
 \lstdefinestyle{customc}{
   belowcaptionskip=1\baselineskip,
   breaklines=true,
@@ -39,8 +47,8 @@
 %You could tho.
 %% ------------------------------ Actual document ------------------------------
 
-\author{Renato Flores, 201709244}
-\title{Tarea - 1}	
+\author{\nombre , \carnet}
+\title{\titulo}	
 
 \graphicspath{{/home/renato/screenshots/renato/second-semester-2020/redes-1/agosto-09/}}
 
@@ -59,12 +67,14 @@
 		\caption{Comprobando la conexión entre ambas computadoras cliente}
 	\end{figure}
 	\FloatBarrier %Use float barrier explicitly if you 
-		\subsection{Nodes deployment}
+		\subsection{Nodes do not change}
 			\blindtext
 			\begin{lstlisting}
 #include <stdio.h>
 #define N 10
 /* Instructions 
+	* Performing a node test: 
+		replace text
  * The listings package can also include directly from source code!
  * You must set explictly how the syntax highlithing should look like.
  * You can do it for each codeblock, or you can write highliting configuration 

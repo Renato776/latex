@@ -4,44 +4,29 @@
 \usepackage{graphicx} %Needed to insert images!
 \usepackage[spanish]{babel}	%Use babel package to set language for the document.
 
-\setcounter{tocdepth}{3} 	%Set to 5 if you need even further numbering paragrah
-							% and subparagraphs can be numbered too!
+\setcounter{tocdepth}{3} 	%Set to 5 if you need even further numbering.
+% paragrahs and subparagraphs can be numbered too!
 \setcounter{secnumdepth}{3}	%Same as above, set to 5 if further numbering is needed.
 
 \usepackage{titlesec}	%Use titlesec package to customize the formatting of titles
 \titleformat{\section}[block]
   {\Large\bfseries\filcenter}	%Use Huge for even bigger headers
-  {} %Add thesection within the braces if you want to display header number.
+  {} %Add \thesection within the braces if you want to display header number.
   {1em}
   {}
-
-\newcommand*\rbreak{\par\noindent\linebreak}
-
-\author{Renato Flores, 201709244}
-\title{A Really important Paper}
+%----------------------------- Constants ------------------------
+\newcommand{\nombre}{Renato Flores}
+\newcommand{\carnet}{201709244}
+\newcommand{\universidad}{Universidad de San Carlos de Guatemala}
+\newcommand{\catedratico}{Ing. Otto Salazar}
+\newcommand{\curso}{Auditoria y Revision de Redes 1}
+\newcommand{\titulo}{Como integrar una base de datos inteligente en PostgreSQL}
+% ---------------------- Custom comands -----------------------------
+\newcommand*\rbreak{\par\noindent\linebreak} %My own custom linebreaks!
 
 \begin{document}
 
-\begin{titlepage}
-	\centering
-	\includegraphics[width=0.15\textwidth]{/home/renato/latex/caratula/logo.png}\par\vspace{1cm}
-	{\scshape\LARGE Universidad de San Carlos de Guatemala \par}
-	\vspace{1cm}
-	{\scshape\Large Sistemas de Administración de Bases de Datos \par}
-	\vspace{1.5cm}
-	{\huge\bfseries Como integrar una base de datos inteligente en PostgreSQL \par}
-	\vspace{2cm}
-	{\Large Renato Flores, 201709244\par}
-	\vfill
-	catedratico\par
-	Ing. Otto Salazar
-
-	\vfill
-
-% Bottom of the page
-	{\large \today\par}
-\end{titlepage}
-
+\input{/home/renato/latex/caratula/caratula.tex}
 \tableofcontents
 \clearpage
 
@@ -50,7 +35,7 @@
 	\subsection{A test subsection}
 		\blindtext
 		\subsubsection{A test subsubsection}
-			\blindtext \rbreak %Use rbreak to provide amazing linebreaks! (it handles indentation and other stuff, is a custom command!
+			\blindtext \rbreak 
 			\blindtext \rbreak
 			\blindtext
 		\subsection{Another test subsection}
