@@ -1,0 +1,4 @@
+\babel@toc {spanish}{}
+\contentsline {section}{\numberline {1}My First Section}{2}% 
+\contentsline {subsection}{\numberline {1.1}My Second Section}{2}% 
+\contentsline {section}{\numberline {2}My third section}{2}% 

@@ -1,0 +1,92 @@
+\documentclass{article} %Use titlepage option to set title in a page of its own
+\usepackage{blindtext}	%Use blind text to produce random text
+\usepackage[left=1cm,right=1cm,top=1cm,bottom=1cm]{geometry} %Use geometry package to set custom margin sizes
+\usepackage{graphicx} %Needed to insert images!
+\usepackage[section]{placeins} %Needed to ensure images don't fall out of their sections.
+\usepackage[spanish]{babel}	%Use babel package to set language for the document.
+\usepackage{listings}       % Needed to highlight code snippets. Amazing package!
+\usepackage{xcolor} %Needed to actual highliting of source code.
+%If not imported, source code will be formatted accordingly but no color syntax will be performed.
+\setcounter{secnumdepth}{0}	%Change the number if you need numbering on the sections.
+
+\usepackage{titlesec}	%Use titlesec package to customize the formatting of titles
+\titleformat{\section}[block]
+  {\Large\bfseries\filcenter}	%Use Huge for even bigger headers
+  {} %Add thesection within the braces if you want to display header number.
+  {1em}
+  {}
+
+\newcommand*\rbreak{\par\noindent\linebreak}
+%% ------------------------------ Code highliting style specification -----------------
+\lstdefinestyle{customc}{
+  belowcaptionskip=1\baselineskip,
+  breaklines=true,
+  %frame=L,
+ % xleftmargin=\parindent, 
+ % Use the commented options above if you'd like a left margin for the code block.
+ % useful to highlight the fact that is a code snippet.
+  language=C,
+  showstringspaces=false,
+  basicstyle=\footnotesize\ttfamily,
+  keywordstyle=\bfseries\color{green!40!black},
+  commentstyle=\itshape\color{purple!40!black},
+  identifierstyle=\color{blue},
+  stringstyle=\color{orange},
+}
+\lstset{style=customc} %The original manual also had escapechar=@, as a parameter.
+%Not sure what it does tho. Also, make sure to include this line to set the 
+%listings style globally and not needing to set it manually for each block!
+%You could tho.
+%% ------------------------------ Actual document ------------------------------
+
+\author{Renato Flores, 201709244}
+\title{Tarea - 1}	
+
+\graphicspath{{/home/renato/screenshots/renato/second-semester-2020/redes-1/agosto-09/}}
+
+\begin{document}
+\maketitle
+
+\section{Instalacion de NG-EVE}
+	\blindtext
+	\begin{figure}[h]
+		\includegraphics[width=\textwidth,keepaspectratio]{part1}
+		 \caption{Comprobando la conexión entre las computadoras cliente y sus respectivas interfaces del router}
+	    \label{fig:conn1}
+	\end{figure}
+	\begin{figure}[h]
+		\includegraphics[width=\textwidth,keepaspectratio]{part2}
+		\caption{Comprobando la conexión entre ambas computadoras cliente}
+	\end{figure}
+	\FloatBarrier %Use float barrier explicitly if you 
+		\subsection{Nodes deployment}
+			\blindtext
+			\begin{lstlisting}
+#include <stdio.h>
+#define N 10
+/* Instructions 
+ * The listings package can also include directly from source code!
+ * You must set explictly how the syntax highlithing should look like.
+ * You can do it for each codeblock, or you can write highliting configuration 
+ * and export it to a style, then you can use the style whenever you call a 
+ * listings block.
+*/
+
+
+int main()
+{
+    int i;
+
+    // Line comment.
+    puts("Hello world!");
+
+    for (i = 0; i < N; i++)
+    {
+        puts("LaTeX is also great for programmers!");
+    }
+
+    return 0;
+}
+		\end{lstlisting} 
+		%The listings package also supports importing directly from source code!
+\end{document}

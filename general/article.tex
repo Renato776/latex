@@ -1,0 +1,68 @@
+\documentclass[titlepage]{article} %Use titlepage option to set title in a page of its own
+\usepackage{blindtext}	%Use blind text to produce random text
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry} %Use geometry package to set custom margin sizes
+\usepackage{graphicx} %Needed to insert images!
+\usepackage[spanish]{babel}	%Use babel package to set language for the document.
+
+\setcounter{tocdepth}{3} 	%Set to 5 if you need even further numbering paragrah
+							% and subparagraphs can be numbered too!
+\setcounter{secnumdepth}{3}	%Same as above, set to 5 if further numbering is needed.
+
+\usepackage{titlesec}	%Use titlesec package to customize the formatting of titles
+\titleformat{\section}[block]
+  {\Large\bfseries\filcenter}	%Use Huge for even bigger headers
+  {} %Add thesection within the braces if you want to display header number.
+  {1em}
+  {}
+
+\newcommand*\rbreak{\par\noindent\linebreak}
+
+\author{Renato Flores, 201709244}
+\title{A Really important Paper}
+
+\begin{document}
+
+\begin{titlepage}
+	\centering
+	\includegraphics[width=0.15\textwidth]{/home/renato/latex/caratula/logo.png}\par\vspace{1cm}
+	{\scshape\LARGE Universidad de San Carlos de Guatemala \par}
+	\vspace{1cm}
+	{\scshape\Large Sistemas de Administración de Bases de Datos \par}
+	\vspace{1.5cm}
+	{\huge\bfseries Como integrar una base de datos inteligente en PostgreSQL \par}
+	\vspace{2cm}
+	{\Large Renato Flores, 201709244\par}
+	\vfill
+	catedratico\par
+	Ing. Otto Salazar
+
+	\vfill
+
+% Bottom of the page
+	{\large \today\par}
+\end{titlepage}
+
+\tableofcontents
+\clearpage
+
+\section{My First Section}
+	\blindtext
+	\subsection{A test subsection}
+		\blindtext
+		\subsubsection{A test subsubsection}
+			\blindtext \rbreak %Use rbreak to provide amazing linebreaks! (it handles indentation and other stuff, is a custom command!
+			\blindtext \rbreak
+			\blindtext
+		\subsection{Another test subsection}
+			\blindtext
+	\section{Another test section}
+		\blindtext
+	\section{A test section}
+		\blindtext
+	\section{Another test section}
+		\blindtext
+		\subsection{A test subsection}
+			\blindtext
+		\subsection{Another test subsection}
+			\blindtext
+\end{document}

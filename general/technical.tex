@@ -1,0 +1,99 @@
+\documentclass{article} %Use titlepage option to set title in a page of its own
+\usepackage{blindtext}	%Use blind text to produce random text
+\usepackage[left=1cm,right=1cm,top=1cm,bottom=1cm]{geometry} %Use geometry package to set custom margin sizes
+\usepackage{graphicx} %Needed to insert images!
+\usepackage[section]{placeins} %Needed to ensure images don't fall out of their sections.
+\usepackage[spanish]{babel}	%Use babel package to set language for the document.
+
+\setcounter{secnumdepth}{0}	%Change the number if you need numbering on the sections.
+
+\usepackage{titlesec}	%Use titlesec package to customize the formatting of titles
+\titleformat{\section}[block]
+  {\Large\bfseries\filcenter}	%Use Huge for even bigger headers
+  {} %Add thesection within the braces if you want to display header number.
+  {1em}
+  {}
+
+\newcommand*\rbreak{\par\noindent\linebreak}
+
+%% ----------------- Custom support for highlithing code snippets--------------
+%Its usage is appropiate if you plan on showcasing code snippets and you'd like
+%to highlight an specific subset of the code. Otherwise you'd probably better of 
+%using the lstlisting package.
+\usepackage{verbatimbox,xcolor,lipsum}
+\usepackage{verbatimbox}
+\def\codesize{\footnotesize}
+\newsavebox\thecolorfield
+\newcommand\setcolorfield[1][blue!19!gray!18]{%
+  \savebox{\thecolorfield}{\codesize%
+    \makebox[0pt][l]{\textcolor{#1}{%
+    \rule[-\dp\strutbox]{\textwidth}{\dimexpr\ht\strutbox+\dp\strutbox}}}}%
+}
+
+\def\colorfield{\usebox{\thecolorfield}}
+
+\setcolorfield
+
+\newcommand*\ifline[4]{%
+  \ifnum\value{VerbboxLineNo}<#1#4\else
+    \ifnum\value{VerbboxLineNo}>#2#4\else#3\fi
+  \fi
+}
+
+\newcommand\rednum{\makebox[0ex][r]{\color{red}\arabic{VerbboxLineNo}:}\hspace{1ex}}
+
+\newcommand\blacknum{\makebox[0ex][r]{\arabic{VerbboxLineNo}:}\hspace{1ex}}
+
+%% ------------------------------ Actual document ------------------------------
+
+\author{Renato Flores, 201709244}
+\title{Tarea - 1}	
+
+\graphicspath{{/home/renato/screenshots/renato/second-semester-2020/redes-1/agosto-09/}}
+
+\begin{document}
+\maketitle
+
+\section{Instalacion de NG-EVE}
+	\blindtext
+	\begin{figure}[h]
+		\includegraphics[width=\textwidth,keepaspectratio]{part1}
+		 \caption{Comprobando la conexión entre las computadoras cliente y sus respectivas interfaces del router}
+	    \label{fig:conn1}
+	\end{figure}
+	\begin{figure}[h]
+		\includegraphics[width=\textwidth,keepaspectratio]{part2}
+		\caption{Comprobando la conexión entre ambas computadoras cliente}
+	\end{figure}
+	\FloatBarrier %Use float barrier explicitly if you 
+		\subsection{Nodes deployment}
+			\blindtext
+			\begin{verbnobox%The empty comment line is required!
+			}[\codesize\ifline{8}{18}{\colorfield\rednum}{\blacknum}\ttfamily]
+#include <stdio.h>
+#define N 10
+/* Instructions */
+//ifline{8}{18} indicates subrange of code lines to draw attention to.
+//It takes 4 arguments, the first 2 are the range (inclusive) of the area to highlight.
+//The other 2 are format parameters to customize the appearence of highlithed area and
+//non highlited area. The 3th argument formats the highlighted area, the 4th argument
+//Formats the non-highlighted area. If you don't need to highlight an specific range of 
+//code lines, avoid using the ifline command.
+
+int main()
+{
+    int i;
+
+    // Line comment.
+    puts("Hello world!");
+
+    for (i = 0; i < N; i++)
+    {
+        puts("LaTeX is also great for programmers!");
+    }
+
+    return 0;
+}
+\end{verbnobox}
+		
+\end{document}

@@ -1,0 +1,38 @@
+\documentclass[titlepage]{article} %Use titlepage option to set title in a page of its own
+\usepackage{titlesec}	%Use titlesec package to customize the formatting of titles
+\usepackage{blindtext}	%Use blind text to produce random text
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry} %Use geometry package to set custom margin sizes
+\usepackage[spanish]{babel}	%Use babel package to set language for the document.
+%-------------------------- Custom format options ------------------------------
+	%\titleformat{\section}[block]{\color{blue}\Large\bfseries\filcenter}{}{1em}{}
+
+\titleformat{\section}[block]
+  {\bfseries\sffamily\filcenter}
+  {\thesection}
+  {1em}
+  {}
+\titleformat{\subsection}[hang]
+  {\fontsize{12}{15}\bfseries\sffamily}
+  {\thesubsection}
+  {1em}
+  {}	
+	
+	
+	\setcounter{secnumdepth}{5}	%Format table of contents deph behavior
+	%\renewcommand{\contentsname}{Whatever} %Customize table of contents title
+%------------------------------ Header ---------------------------------------------
+\author{Renato Flores, 201709244}
+\title{A Really important Paper}
+%------------------------------ Document -------------------------------------------
+\begin{document}
+\maketitle
+\tableofcontents
+\clearpage
+    \section{My First Section}
+		\blindtext
+    \subsection{My Second Section}
+    	\blindtext
+    \section{My third section}
+    	\blindtext
+    
+\end{document}
