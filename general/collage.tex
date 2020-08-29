@@ -1,0 +1,61 @@
+%\documentclass{article} %Use titlepage option to set title in a page of its own
+\documentclass[a4paper,12pt]{article}
+\usepackage[left=0.5cm,right=0.5cm,top=2cm,bottom=3cm]{geometry} %Use geometry package to set custom margin sizes
+\usepackage{graphicx} %Needed to insert images!
+%\usepackage[section]{placeins} %Needed to ensure images don't fall out of their sections.
+\usepackage[spanish]{babel}	%Use babel package to set \setcounter{secnumdepth}{0}	%Change the number if you need numbering on the sections.
+
+\usepackage{fancyhdr} %Use for footers, can also be used for headers.
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE,RO]{201709244}
+\fancyhead[RE,LO]{Renato Josue Flores Perez}
+\fancyfoot[LE,RO]{Redes de computadoras 1, Sección N, Ing. Pedro Pablo Hernandez Ramirez}
+
+\renewcommand{\headrulewidth}{2pt}
+\renewcommand{\footrulewidth}{1pt}
+
+\usepackage{titlesec}	%Use titlesec package to customize the formatting of titles
+\titleformat{\section}[block]
+  {\Large\bfseries\filcenter}	%Use Huge for even bigger headers
+  {} %Add thesection within the braces if you want to display header number.
+  {1em}
+  {}
+
+%------------------------------ Constants ---------------------------------
+\newcommand{\nombre}{Renato Josue Flores Perez}
+\newcommand{\carnet}{201709244}
+\newcommand{\universidad}{USAC}
+\newcommand{\catedratico}{Ing. Otto Salazar}
+\newcommand{\curso}{Redes - 1}
+\newcommand{\titulo}{Tarea Practica Individual No. 2}
+%----------------------- Custom commands ------------------------------
+\newcommand*\rbreak{\par\noindent\linebreak}
+%% ----- Code highliting style specification -----------------
+\graphicspath{{/home/renato/screenshots/redes-1/}}
+
+\begin{document}
+\section{\titulo}
+\begin{center}
+\textbf{\today}
+\end{center}
+\begin{figure}[h]
+	\includegraphics[width=\textwidth,keepaspectratio]{topologia.png}
+		 \caption{Topologia realizada}
+\end{figure}
+\pagebreak
+	\begin{figure}[h]
+		\includegraphics[width=\textwidth,keepaspectratio]{arch-ping.png}
+		 \caption{Ping desde la maquina A (Arch) hacia la maquina B (TinyCore)}
+	    \label{fig:conn1}
+	    \rbreak
+	    \includegraphics[width=\textwidth,keepaspectratio]{tiny-core-ping.png}
+		\caption{Ping desde la maquina B (TinyCore) hacia la maquina A (Arch)}
+	\end{figure}
+\pagebreak
+	\begin{figure}[h]
+		\includegraphics[width=\textwidth,keepaspectratio]{wireshark.png}
+		 \caption{Captura de paquetes ICMP}
+	    \label{fig:conn1}
+	\end{figure}
+\end{document}

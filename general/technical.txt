@@ -1,0 +1,63 @@
+Tarea - 1
+Renato Flores, 201709244 10 de agosto de 2020
+Instalacion de NG-EVE
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam lobortis facilisis sem. Nullam nec mi et neque pharetra sollicitudin. Praesent imperdiet mi nec ante. Donec ullamcorper, felis non sodales commodo, lectus velit ultrices augue, a dignissim nibh lectus placerat pede. Vivamus nunc nunc, molestie ut, ultricies vel, semper in, velit. Ut porttitor. Praesent in sapien. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Duis fringilla tristique neque. Sed interdum libero ut metus. Pellentesque placerat. Nam rutrum augue a leo. Morbi sed elit sit amet ante lobortis sollicitudin. Praesent blandit blandit mauris. Praesent lectus tellus, aliquet aliquam, luctus a, egestas a, turpis. Mauris lacinia lorem sit amet ipsum. Nunc quis urna dictum turpis accumsan semper.
+Figura 1: Comprobando la conexi´on entre las computadoras cliente y sus respectivas interfaces del router
+
+Figura 2: Comprobando la conexi´on entre ambas computadoras cliente
+
+Nodes deployment
+
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam lobortis facilisis sem. Nullam nec mi et neque pharetra sollicitudin. Praesent imperdiet mi nec ante. Donec ullamcorper, felis non sodales commodo, lectus velit ultrices augue, a dignissim nibh lectus placerat pede. Vivamus nunc nunc, molestie ut, ultricies vel, semper in, velit. Ut porttitor. Praesent in sapien. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Duis fringilla tristique neque. Sed interdum libero ut metus. Pellentesque placerat. Nam rutrum augue a leo. Morbi sed elit sit amet ante lobortis sollicitudin. Praesent blandit blandit mauris. Praesent lectus tellus, aliquet aliquam, luctus a, egestas a, turpis. Mauris lacinia lorem sit amet ipsum. Nunc quis urna dictum turpis accumsan semper.
+
+1: #include <stdio.h>
+
+2: #define N 10
+
+3: /* Instructions */
+
+4: //ifline{8}{18} indicates subrange of code lines to draw attention to.
+
+5: //It takes 4 arguments, the first 2 are the range (inclusive) of the area to highlight.
+
+6: //The other 2 are format parameters to customize the appearence of highlithed area and
+
+7: //non highlited area. The 3th argument formats the highlighted area, the 4th argument
+
+8: //Formats the non-highlighted area. If you don't need to highlight an specific range of
+
+9: //code lines, avoid using the ifline command.
+
+10:
+
+11: int main()
+
+12: {
+
+13: int i;
+
+14:
+
+15: // Line comment.
+
+16: puts("Hello world!");
+
+17:
+
+18: for (i = 0; i < N; i++)
+
+19: {
+
+20:
+
+puts("LaTeX is also great for programmers!");
+
+21: }
+
+22:
+
+23: return 0;
+
+24: }
+
+

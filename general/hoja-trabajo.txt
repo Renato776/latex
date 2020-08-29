@@ -1,0 +1,55 @@
+Hoja de trabajo #1
+Reforzamiento de conceptos
+Renato Flores, 201709244
+10 de agosto de 2020
+1. Explique en qu´e consiste un sistema operativo.
+Software que controla la computadora y administra los servicios y recursos disponibles. Permite controlar las asignaciones de memoria, ordernar las solicitudes al sistema, controlar los dispositivos de entrada y salida, facilitar la conexi´on de redes y el manejo de archivos.
+2. Justifique porque la arquitectura de un SO est´a disen~ada por capas.
+Un SO se disen~a en capas con el objetivo de poder abstraer la complejidad del hardware subyacente poco a poco. De esta forma, la capa mas cercana al nu´cleo (Controlador de interrupciones) se centra y optimiza lo mas posible para suplir esa funci´on unicamente. Logrando que las demas capas que van encima puedan utilizar las herramientas prove´idas por las capas inferiores y concentrarse en cumplir tareas cada vez de m´as alto nivel, ocultando en cada capa parte de la complejidad inherente a la programaci´on en bajo nivel. El modelo de disen~o en capas, adem´as de obtener una abstracci´on gradual del hardware tambi´en resulta muy u´til para encontrar errores, modularizar el trabajo y facilita la construcci´on del SO en equipos. Cada equipo asociado al desarrollo de una capa.
+3. Defina el concepto de proceso.
+Un proceso es un programa en ejecuci´on. Un proceso no es un programa, ya que el programa es un conjunto de instrucciones como tal y un proceso es cuando ese conjunto de instrucciones se encuentra en ejecuci´on. Un proceso puede levantar m´as subprocesos segu´n indique el programa. Todo proceso tiene asignado un espacio de direcciones en memoria para operar, designado por el SO.
+4. Que es la memoria MDA?
+Es un metodo denominado formalmente como Acceso Directo a la Memoria, el cual le permite a ciertos dispositivos de entrada/salida acceder directamente a la memoria principal (RAM) sin necesidad de esperar a que el CPU se desocupe para atender al dispositivo. El objetivo es aprovechar los tiempos de espera del CPU.
+5. ¿En qu´e consiste la planificaci´on de procesos?
+La planificaci´on de procesos consiste en decidir que procesos se atienden en que momento, ya que la mayor´ia del tiempo hay varios procesos en estado ready que pueden ser puestos en ejecuci´on, pero solo uno a la vez puede ser ejecutado por el CPU. El encargado de tomar la decisi´on de cuando se atiende a cada proceso se le denomina Scheduler. El algoritmo en el que Scheduler se basa para tomar la decisi´on var´ia de acuerdo a la implementaci´on. Algunas de las preguntas clave que se hace el Scheduler antes de tomar una decisi´on son:
+ejecutar el padre o el hijo? Proceso bloquea por sem´aforo: que hacer? Proceso bloquea por I/O listo: entrar el proceso que paso de bloqueado a listo? Entrar al proceso interrumpido?
+1
+
+6. ¿En qu´e consiste un sistema operativo online?
+Un sistema operativo online es una interface de usuario (UI) que habilita a los usuarios a accesar aplicaciones almacenadas completamente o parcialmente en la nube. Generalmente imitan la interfaz de un sitema opeartivo tradicional como Windows, sin embargo no son Sistemas Operativos reales en el sentido estricto de la palabra, ya que no manejan ningun tipo de hardware directamente.
+7. Mencione y explique dos estados de un proceso.
+7.1. Listo
+Un usuario listo es un proceso recien creado que ha sido registrado por el Scheduler como un proceso valido para comenzar su ejecuci´on.
+7.2. Terminado
+Un proceso que ha terminado su ejecuci´on. El SO procede a liberar su espacio en memoria para dar lugar a otros procesos. Un proceso puede terminar voluntariamente o involuntariamente.
+8. ¿Cu´al es la diferencia entre aborto y suspensi´on, en relaci´on a los procesos de un SO?
+El aborto de un proceso fuerza el fin de su ejecuci´on. Enviando el proceso del estado en ejecuci´on al estado finalizado. Esto implica que toda la informaci´on que el proceso estaba utilizando en su espacio de memoria es desocupado y puede ser utilizado por otro proceso. La suspensi´on de un proceso no fuerza la terminaci´on de su ejecuci´on, sino simplemente se deja en un estado de espera. Su espacio en memoria se mantiene reservado, pero el CPU se libera y puede atender otro proceso mientras el proceso en cuesti´on se encuentra en suspesi´on. Posteriormente el proceso puede ser reanudado y continuar su ejecuci´on o puede ser abortado. El SO sabe cuando la memoria RAM esta llena y si existen procesos en suspensi´on. De ser as´i, generalmente los datos del espacio de memoria de dichos procesos se mueven al Swap para dar lugar en la RAM a nuevos procesos.
+2
+
+Usuario
+
+Diagrama de Conceptos
+
+BPC
+
+programa
+
+proceso
+
+programa programa
+
+Scheduling
+
+Acceso a ficheros
+Dispositivos de Entrada / Salida
+DMA
+Gestion de memoria
+Rutinas Signal & Wait
+
+Controlador CPU
+
+Controlador de interrupciones
+
+Subproceso
+
+
