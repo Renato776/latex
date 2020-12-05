@@ -1,0 +1,1000 @@
+\documentclass{article}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry} 
+\usepackage{blindtext}
+\usepackage{graphicx} 
+\usepackage[section]{placeins} 
+\usepackage[spanish]{babel}
+\decimalpoint
+\usepackage{listings} 
+\usepackage{xcolor} 
+\usepackage{pdfpages}
+\setcounter{secnumdepth}{2}
+\usepackage{apacite}
+\usepackage{amsmath}
+\usepackage{array} 
+\usepackage{textcomp}
+
+%\usepackage{hyperref}
+%\hypersetup{
+%    colorlinks=true,
+%    linkcolor=blue,
+%    filecolor=magenta,      
+%    urlcolor=cyan,
+%}
+%----------------------------- Constants ------------------------
+\newcommand{\nombre}{Renato Flores}
+\newcommand{\carnet}{201709244}
+\newcommand{\universidad}{Universidad de San Carlos de Guatemala}
+\newcommand{\catedratico}{Ing. Fernando Álvarez Paz }
+\newcommand{\curso}{Investigación de Operaciones 2}
+\newcommand{\titulo}{Teoría de Colas}
+%----------------------------- Custom Commands -----------------
+\newcommand*\rbreak{\par\noindent\linebreak}
+
+\graphicspath{{/home/renato/screenshots/math/}}
+\begin{document}
+\input{/home/renato/latex/caratula/caratula.tex}
+\tableofcontents
+\listoffigures
+\clearpage
+\section{Introducción}
+Las colas son parte de la vida diaria. Todos esperamos en colas
+para recibir servicios, estos pueden ser cosas simples como 
+comprar tortillas, pagar una boleta en el banco, pagar en caja
+de un supermecado, etc. Si bien es cierto que esto forma parte de
+nuestra vida diaria y es casi imposible pasar un dia completo sin 
+esperar en alguna cola por cualquier razón, también es cierto
+que siempre nos resulta molesto tener que esperar cuando las colas 
+se prolongan demasiado.
+
+El tiempo que la población humana pierde esperando en colas es un 
+factor importante tanto en la calidad de vida como en la eficiencia
+de la economía y otros campos. Esto debido a que el tiempo
+perdido esperando en colas es tiempo que podría emplearse 
+en alguna otra actividad.
+
+Es por esta razón, que muchos matemáticos e investigadores se han
+dedicado a estudiar estos sistemas detenidamente, estudiando
+su naturaleza, componentes, comportamiento y demás detalles 
+de interés con el objetivo de predecir su compartamiento y en
+consecuencia tomar las mejores decisiones para optimizar detalles
+como tamaño esperado de la cola, tiempos de espera promedio, entre 
+otros son de extrema importancia e interés. 
+
+Los investigadores a lo largo del tiempo han denominado este estudio
+como ``Teoría de Colas''.
+
+Para cumplir los objetivos de este documento se presenta toda la información
+teórica relevante para resolver el presente caso de estudio en el Marco Teórico.
+El texto del enunciado junto con su resolución se presentan en el Marco Práctico.
+
+\clearpage
+\section{Objetivos}
+Evaluar distintas propuestas de optimización para bajar el nivel de inventario 
+en proceso en la manufactura de alas para avión.
+\subsection{Específicos}
+\begin{itemize}
+	\item Evaluar el estado actual del sistema.
+	\item Comparar el costo actual del sistema con el costo estimado por 
+		cada propuesta.
+	\item Reducir el costo total por hora de proceso en el sistema.
+\end{itemize}
+\clearpage
+\section{Marco Teórico}
+\subsection{Definiciones}
+Comenzaremos por la base teórica para responder preguntas como: 
+¿Cuál es la definición de una cola?, ¿Cuáles son los componentes de una cola?, 
+entre otras.
+\subsubsection{Cola}
+Se define como el lugar donde los clientes esperan antes de recibir un servicio.
+Esta puede ser finita o infinita. Esta puede ser física o abstracta.
+\subsubsection{Cliente}
+Objeto que tiene como objetivo recibir un servicio y salir. Si el servicio 
+está ocupado por otro cliente, este debe esperar en una cola.
+\subsubsection{Sistema de Colas}
+Un sistema que involucra colas de cualquier tipo.
+\subsubsection{Mecanismo de Servicio}
+Una o más estaciones de servicio, cada una de ellas con uno o más 
+canales de servicio paralelos denominados Servidores.
+\subsubsection{Disciplina de la cola}
+Se refiere al orden con que los clientes son escogidos de la cola
+para brindarles servicio. Existen las disciplinas: Random, FIFO, LIFO, entre otras.
+Por lo general la más utilizada es FIFO (First In First Out) y por tanto 
+es un estándar que si no se especifíca la disciplina de la cola de manera
+explícita es porque la cola utiliza esta disciplina. Toda la teoría presentada
+en el resto de este documento se basa en colas de esta disciplina.
+\subsubsection{Tasa media de llegadas}
+Se refiere al número esperado de llegadas por unidad de tiempo. Este dato
+se representa con la letra griega $\lambda$ (Lambda).
+\subsubsection{Tasa media de servicio}
+En todo sistema de colas, la estación de servicio debe tener asignado algún 
+tiempo que tarda en proveer dicho servicio a un cliente.  La tasa media de
+servicio indica la cantidad esperada de clientes que completan su servicio 
+por unidad de tiempo. Se denota con la letra griega $\mu$ (Mu).
+En varias ocasiones existen múltiples servidores paralelos por estación 
+de servicio, si la tasa media de servicio por cada servidor es distinta,
+es necesario entonces agregar un subíndice a cada $\mu$ para indicar
+a que servidor pertenece dicha tasa. Sin embargo, si la tasa media
+es la misma para todos los servidores, basta con utilizar $\mu$.
+\subsubsection{Número de clientes en el sistema de colas en un determinado momento}
+Suele denotarse por la letra $n$.
+\subsubsection{Factor de Utilización}
+La fracción esperada de tiempo que los servidores individuales están ocupados.
+Se denota por la letra griega $\rho$ (Rho). Un factor de utilización 
+mayor que 1 indica que el sistema está sobre cargado y muchas de las fórmulas 
+y asunciones que se realizan en este documento no aplicarían. Es importante 
+para cualquier sistema de colas que desee mantener una longitud de cola y un tiempo
+de espera promedio relativamente razonables que posea un factor de utilización
+menor que 1. Este factor se define como:
+\begin{equation} 
+	\label{eq9:rho}
+	\rho = \frac{\lambda}{\mu s}
+\end{equation}
+\subsubsection{Número esperado de Clientes en el sistema}
+Este valor incluye tanto los clientes en cola como los clientes recibiendo servicio.
+Este valor se denota por $L_{s}$ o simplemente como $L$. Es una de las
+variables fundamentales en la teoría de colas. Su definición es independiente
+del tipo de sistema y sigue la siguiente fórmula:
+\begin{equation}
+	\label{eq1:lsDef}
+	L = \sum_{n=0}^{\infty} n Pn
+\end{equation}
+Donde Pn es es la probabilidad de que hayan exactamente n clientes en el Sistema.
+La forma de encontrar Pn puede ser en ocasiones compleja 
+y por lo general depende del tipo de 
+sistema. Si bien esta es la definición para $L$, en la práctica es muy raro que 
+se utilice para encontrar su valor, ya que evaluar series de manera exacta a  mano
+es súmamente complejo: \\
+Primero se debe verificar que la Serie converja. Si la serie diverge, entonces
+el modelo está mal planteado o hay un error en la forma de obtener Pn. 
+Una vez se está seguro de la convergencia de la serie se debe verificar si 
+se asemeja a una serie conocida en el mundo matemático (Serie Geométrica, Hipergeométrica, Trigonométrica, Exponencial, etc) de ser así, se pude proceder a expandir dicha
+serie y evaluarla; de lo contrario se debe recurrir a técnicas de cálculo, 
+desplazamiento y cambios de variable sobre series para intentar su expasión a mano, 
+dicho procedimiento es en extremo complejo y en ocasiones imposible. Si esto falla, 
+se puede intentar obtener un valor aproximado de la serie evaluandola en un 
+valor cercano al infinito. Es por esta razón que rara vez se intenta encontrar $L$ por
+definición. Muchos matemáticos e investigadores del campo de IO a lo largo de la
+historia han estudiado modelos específicos de sistemas de colas y 
+realizado este trabajo por nosotros proveyéndonos simplemente con la fórmula 
+para su evaluación directa, obtenida de la expasión y simplificación de esta 
+serie para cada modelo conocido.
+\subsubsection{Longitud esperada de la cola}
+Este valor no incluye a los clientes siendo atendidos, sino únicamente a aquellos 
+clientes esperando en cola. Este valor siempre es menor que $L$ y en ocasiones
+puede ser cercano a 0. Se denota por $L_{q}$ y su definición es similar a $L$. 
+\begin{equation}
+	\label{eq2:lqDef}
+	L_{q} = \sum_{n=s}^{\infty} Pn \left(n - s\right)	
+\end{equation}
+\subsubsection{Tiempo de espera en el sistema}
+El tiempo de espera es una variable aleatoria que indica el tiempo que pasa
+un cliente en el sistema ya sea esperando o siendo atendido. 
+Se denota por $W$ y al ser una variable aleatoria
+es necesario conocer su distribución de probabilidad, media y varianza para ser
+definida. Estos dependen de que tipo de modelo se estudia y su deducción formal
+no es trivial. En la práctica no es de interés conocer la naturaleza y definición
+formal de $W$ sino únicamente el tiempo de espera promedio 
+denotado como $w_{s}$ o simplemente $w$ y se define como: $w = E\left(W\right) $
+Es decir el valor esperado de $W$.
+\subsubsection{Tiempo de espera en la cola}
+Similar a $W$ pero excluye el tiempo empleado en ser atendido, es decir
+que sólo toma en cuenta el tiempo que pasa un cliente en la cola. Esta 
+también es una variable aleatoria y se denota como $W_{q}$. Análogamente,
+el tiempo de espera en la cola promedio o esperado es: $w_{q} = E\left(W_{q}\right)$
+
+\subsubsection{Relaciones entre $L, W, L_{q}, W_{q}$ }
+John D.C. Little demstró que en un proceso de colas en estado estable, se cumple:
+\begin{equation}
+	\label{eq3:lw}
+	L = \lambda W
+\end{equation}
+%De manera análoga, se cumple:
+\begin{equation}
+	\label{eq4:lwq}
+	L_{q} = \lambda W_{q}
+\end{equation}
+%Finalmente, se demuestra que:
+\begin{equation}
+	\label{eq5:wwq}
+	W =  W_{q} + \frac{1}{\mu}
+\end{equation}
+%nothing here.
+\begin{equation}
+	\label{eq6:llq}
+	L =  L_{q} + \frac{\lambda}{\mu}
+\end{equation}
+
+Todas estas ecuaciones son únicamente validas si $\lambda$ y $\mu$ no dependen
+de la cantidad de clientes en el sistema y $\mu$ es constante para todos los servidores 
+paralelos de la estación de servicio. En caso que alguno de estos supuestos no 
+sea verdadero, estas relaciones no aplican. También es importante mencionar que estas
+relaciones son independientes del tipo de distrución de tiempo de servicio, el proceso
+de llegadas y el número de servidores.
+
+\subsection{Notación de Kendall}
+Como se ha visto
+hasta el momento, la definición de la teoría de colas es bastante general y 
+no impone restricciones en cuanto al proceso de entrada, distribución de tiempos
+de servicio, capacidad del sistema, cantidad de estaciones de servicio, etc. 
+De acuerdo a la variación de estos parámetros se crea un modelo u otro. Debido 
+entonces a la exageradamente gran cantidad de combinaciones posibles y al 
+desorden con que estos se encontraban originalmente, el profesor David George Kendall
+propuso una notación en 1953 que tuviera como objetivo ordenar e identificar rápidamente 
+los modelos de colas. Su notación fué bien recibida y aún se usa hasta la fecha.
+Esta notación tiene la siguiente forma: \\\\
+\begin{Large} $ A/B/C/D/E/F $ \end{Large} \\\\
+Donde:
+\begin{itemize}
+	\item \large{A: }
+		Código que describe el proceso de llegada. Los códigos más usados son:
+		\begin{itemize}
+			\item \large{M: }
+				Significa ``Markoviano'' 
+				(la tasa de llegadas sigue una distribución de Poisson),
+				significando una distribución exponencial para los 
+				tiempos entre llegadas. Tiende a ser el proceso más
+				estudiado y es común encontrarlo en la realidad.
+			\item \large{D: }
+				Significa Tiempos entre llegadas Deterministas, 
+				es decir, no siguen un proceso probabilista a la
+				hora de su determinación. Tiende a usarse cuando 
+				estos son totalmente constantes. Su utilización 
+				en la práctica es muy rara.
+			\item \large{G: }
+				Significa ``distribución General'' de los tiempos
+				entre llegadas, o del régimen de llegadas.
+			\item \large{$E_{k}$: }
+				Significa ``distribución de Erlang'' con parámetro
+				k.
+		\end{itemize}
+	\item \large{B: }
+		Código que describe el proceso de servicio. Los códigos utilizados
+		son los mismos que en A.
+	\item \large{C: }
+		Número de servidores paralelos en la estación de servicio, también 
+		se suele referir a ella como cantidad de canales de servicio.
+		Suele reemplazarse por un número o por la literal  $s$ para
+		indicar que no se sabe la cantidad de canales, pero se sabe
+		que es mayor a 1.
+	\item \large{D: }
+		Indica la capacidad del sistema, es decir el 
+		número máximo de clientes permitidos en el sistema incluyendo
+		los clientes en servicio.
+		Cuando el número está al máximo, las llegadas siguientes son rechazadas.
+		Este parámetro no es obligatorio y suele omitirse cuando es igual 
+		a su valor predeterminado. Su valor predeterminado es $\infty$.
+		Suele utilizarse la literal k para indicar que la capacidad del 
+		sistema es finita pero se desconoce su valor.
+	\item \large{E: }
+		Indica la disciplina de la cola. Valores usuales son:
+		\begin{itemize}
+			\item \large{FIFO: } First In First Out (cola).
+			\item \large{LIFO: } Last In First Out (pila).
+			\item \large{RANDOM: } Los clientes se seleccionan aleatoriamente.
+		\end{itemize}
+		Por lo general la disciplina FIFO es la más utilizada y estudiada
+		tanto en la teoría como en la práctica. Por esta razón 
+		este parámetro tiene como valor predeterminado FIFO y de no 
+		específicarse un valor diferente explícitamente se sobreentiende 
+		que el modelo hace referencia a esta disciplina. Suele omitirse 
+		en la notación de la mayoría de modelos por esta razón.
+	\item \large{F: }
+		El tamaño del origen de las llamadas, es decir el tamaño
+		de la población desde donde los clientes vienen. Por lo general 
+		esta suele tomarse como infinita tanto en la práctica como 
+		en la teoría. Sin embargo, hay ocasiones en las cuales la población 
+		no es infinita, en dicho caso es necesario indicar el tamaño de la
+		población de manera explícita.
+\end{itemize}
+No es necesario indicar los 6 parámetros de manera explícita para identificar un modelo.
+Únicamente los 3 primeros parámetros son obligatorios, si no se especifícan los 
+otros 3, estos toman sus valores predeterminados.\\
+En algunos textos, se suele indicar la disciplina de la cola
+como el último parámetro, siendo el penúltimo parametro el tamaño de la población.
+\subsubsection{Ejemplos}
+\begin{itemize}
+	\item M/M/s
+	\item M/D/1
+	\item M/G/5
+	\item M/M/10/9
+	\item M/M/20/$\infty$/LIFO
+\end{itemize}
+\subsection{Modelos}
+Tras haber introducido la notación de Kendall, es imposible evitar notar
+que existen más de 30 combinaciones posibles para definir modelos distintos.
+Sin embargo, no todos los modelos han sido estudiados de manera formal
+a lo largo de la historia, sino únicamente un pequeño subconjunto de estos.
+En este documento no se presentarán todos los modelos estudiados formalmente por 
+la teoría de colas, sino únicamente los 3 modelos de relevancia para la solución 
+del problema estudiado en este documento. \\
+Por cada modelo se presentan únicamente las fórmulas relevantes
+para la solución del problema en cuestión,
+deducidas por estos investigadores para su fácil utilización
+en la práctica. La demostración de estas fórmulas escapa el alcance de este documento
+y tal como fué expuesto con anterioridad, estas pruebas 
+involucran un gran conocimiento de matemática discreta, series, sucesiones, 
+probabilidad, estadísitica, entre otras disciplinas para su comprensión. Si 
+el lector desea evaluar estas pruebas, puede referirse al libro:
+A First Course in Stochastic Models, Wiley, Chichester, 2003.
+\subsubsection{M/M/s}
+Como lo indica su notación, este modelo indica un proceso de llegadas de Poisson,
+un tiempo entre servicios exponencial, una cantidad de servidores paralelos 
+$s$, una población infinita, una disciplina FIFO y una capacidad de cola infinita. \\
+Este modelo es uno de los más comunes en la teoría de colas y en consecuencia ha 
+sido rigurosamente estudiado a lo largo de la historia. 
+\begin{Large}
+\begin{equation}
+	\label{eq7:p0}
+	P_{0} = 
+\frac{1}{\frac{\left(\frac{\lambda}{\mu}\right)^{s} \sum_{n=s}^{\infty} \left(\frac{\lambda}{\mu s}\right)^{n - s}}{s!} + \sum_{n=1}^{s - 1} \frac{\left(\frac{\lambda}{\mu}\right)^{n}}{n!} + 1} 
+\end{equation}\\
+
+\begin{equation}
+	\label{eq8:pn}
+	P_{n} = 
+\begin{cases} 
+\frac{P_{0} \left(\frac{\lambda}{\mu}\right)^{n}}{n!} & n \leq s \\\frac{P_{0} s^{- n + s} \left(\frac{\lambda}{\mu}\right)^{n}}{s!} & n > s
+\end{cases}
+\end{equation}\\
+
+\begin{equation}
+	\label{eq13:lqmms}
+	\frac{P_{0} \rho \left(\frac{\lambda}{\mu}\right)^{s}}{\left(1 - \rho\right)^{2} s!}
+\end{equation}\\
+\end{Large}
+\subsection{M/D/s}
+Como lo indica su notación, este modelo indica un proceso de llegadas de Poisson,
+un tiempo entre servicios degenerado (constante), una cantidad de servidores paralelos 
+$s$, una población infinita, una disciplina FIFO y una capacidad de cola infinita. \\
+\begin{Large}
+\begin{equation}
+	\label{eq10:lqmds}
+	L_{q} = \frac{\rho^{2}}{2 - 2 \rho}
+\end{equation}
+\end{Large}
+\subsection{$M/E_{k}/1$}
+Como lo indica su notación, este modelo indica un proceso de llegadas de Poisson,
+un tiempo entre servicios con distribución de Erlang y un solo servidor. \\
+El modelo Degenerado supone una varianza 0 en los tiempos de servicio (por lo tanto
+los tiempos de servicio son constantes), mientras que la distribución exponencial
+supone una gran varianza $\sigma^{2} = \frac{1}{\mu}$. Entre estos dos extremos,
+hay un gran intervalo $\left(0 < \sigma < \frac{1}{\mu} \right)$, donde caen la
+mayor parte de las distribuciones de tiempos de servicio reales. Una distribución 
+teórica de tiempos de servicio que concuerda con este espacio intermedio es 
+la Distribución de Erlang, llamada así en honor al fundador de la teoría de colas.\\
+Como se ha mencionado antes, la demostración de las fórmulas presentadas a continuación
+escapa el alcance de este documento. También es importante notar que solamente 
+las fórmulas que son de relevancia para el problema actual serán presentadas.
+
+\begin{Large}
+\begin{equation}
+	\label{eq14:media}
+	Media = \frac{1}{\mu}
+\end{equation}
+\end{Large}
+
+\begin{Large}
+\begin{equation}
+	\label{eq15:desviacion}
+	\sigma = \frac{1}{\mu \sqrt{k}}
+\end{equation}
+\end{Large}
+\begin{Large}
+\begin{equation}
+	\label{eq12:llq}
+	L_{q} = \frac{1+k}{2 k} \frac{\lambda^{2}}{\mu \left( \mu - \lambda \right)}
+\end{equation}
+\end{Large}
+\subsection{Redes de Colas}
+Se le llama una red de colas a 2 o más colas conectadas en serie. Esto es muy común 
+en la práctica y por tanto las redes de colas han sido rigurosamente estudiadas a
+lo largo de la historia. Sin embargo, este es un campo difícil y por tanto 
+solo se estudiará una parte muy pequeña pertinente al presente problema de estudio. \\
+La propiedad más importante de las redes de colas y la única que se cubrirá en este
+documento es la Propiedad de Equivalencia.
+\subsubsection{Propiedad de Equivalencia}
+Suponga que una instalación de servicio tiene s servidores, un proceso de entradas
+de Poisson con parámetro $\lambda$ y la misma distribución de los tiempos 
+de servicio de cada servidor con parámetro $\mu$ (Es decir un modelo M/M/s), donde 
+tal modelo no se encuentra sobrecargado ($\rho < 1$). Entonces, la salida en 
+estado estable de esta instalación de servicio es también un proceso de Poisson
+con parámetro $\lambda$.\\\\
+Es importante notar que la tasa de salida es independiente de $\mu$ siempre
+que el sistema no se sobrecargue. La implicación más importante de esta propiedad 
+es que estas unidades tienen que pasar a otra estación para continuar su servicio, 
+esta segunda estación también tendrá entradas de Poisson y en consecuencia, pueden 
+ser evaluadas por separado. 
+
+\section{Marco Práctico}
+\subsection{Enunciado del caso de estudio}
+Jim Wells, vicepresidente de manufactura en Northern Airplane Company, está alterado. Su caminata de esta mañana por la
+planta más importante de la compañía lo dejó de mal humor.
+Sin embargo, ahora puede descargar su temperamento en Jerry
+Carstairs, el gerente de producción de la planta, a quien acaba
+de llamar a su oficina.
+``Jerry, acabo de regresar de recorrer la planta y estoy muy
+enojado'' ``Cuál es el problema, Jim'' ``Bueno, sabes cuánto
+he recalcado la necesidad de disminuir nuestro inventario en
+proceso'' ``Sí, hemos trabajado duro en eso'' responde Jerry.
+``Pues no lo sufi ciente'' Jim sube más la voz. ``Sabes lo que
+encontré junto al proceso'' ``No'' ``Cinco hojas de metal esperando 
+que las formen en secciones de alas. Después, exactamente en el 
+área siguiente de inspección, ¡13 secciones de alas!
+El inspector estaba revisando una de ellas, pero las otras 12 sólo
+estaban ahí. Tú sabes que tenemos un par de cientos de miles
+de dólares atados en cada una de esas secciones de ala, es decir,
+tenemos algunos millones de dólares en metal terriblemente
+costoso sólo en espera. ¡No podemos tener eso''
+El consternado Jerry Carstairs intenta responder. ``Sí, Jim,
+estoy consciente de que la estación de inspección es un cuello
+de botella. Casi nunca está tan mal como la encontraste esta mañana''
+``Eso espero, claro'' replica Jim, ``pero necesitas prevenir
+que algo tan perjudicial ocurra ni siquiera en ocasiones. ¿Qué
+propones hacer al respecto'' Es notorio que ahora Jerry se anima 
+al responder. ``Bueno, en realidad, ya he estado trabajando
+en este problema; tengo un par de propuestas en la mesa y ya
+pedí a un analista de IO, que es parte de mi personal, que estu-
+die estas propuestas y regrese con recomendaciones'' ``Bien''
+dice Jim, ``me da gusto ver que tratas de resolverlo. Dale a esto
+tu prioridad más alta y repórtame cuanto antes'' ``Está bien''
+promete Jerry.
+
+El siguiente es el problema que Jerry y su analista de IO
+estudian. Cada una de 10 prensas idénticas se usa para formar
+las secciones de alas a partir de hojas de metal con un procesado
+especial. Las hojas llegan de manera aleatoria al grupo de prensas
+con una tasa media de 7 por hora. El tiempo que requiere la
+prensa para formar una sección de ala a partir de la hoja de metal
+tiene distribución exponencial con media de 1 hora. Cuando termina,
+la sección de ala llega de manera aleatoria a una estación
+de inspección con la misma tasa media que las hojas llegan a las
+prensas (7 por hora). Un solo inspector tiene el trabajo de tiempo
+completo de inspeccionar las secciones de ala para asegurar
+que cumplen con las especifi caciones. Cada inspección toma 7
+y1/2 minutos, de manera que puede inspeccionar 8 secciones
+por hora. Esta tasa de inspección ha dado como resultado una
+cantidad promedio sustancial de inventario en proceso en la
+estación de inspección (esto es, el número promedio de secciones
+de ala que esperan pasar la inspección es bastante grande),
+además del que se encuentra en el grupo de máquinas.
+El costo de este inventario en proceso se estima en \$8 por
+hora por cada hoja de metal en las prensas o cada sección de ala
+en la estación de inspección. Por lo tanto, Jerry Castairs tiene
+dos propuestas alternativas para reducir el nivel de inventario
+en proceso.
+La propuesta 1 es usar un poco menos de potencia en las
+prensas (lo que aumentaría su tiempo promedio para formar
+una sección de ala a 1.2 horas), de manera que el inspector
+pudiera mantener el paso con su producción. Esta medida tam-
+bién reduciría el costo de energía para operar las máquinas
+de \$7.00 a \$6.50 por hora. (Por el contrario, incrementar la
+potencia al máximo aumentaría este costo a \$7.50 por hora y
+disminuiría el tiempo promedio para formar cada sección de
+ala a 0.8 horas.)
+La propuesta 2 es sustituir el inspector por uno más joven para
+esta tarea. Éste es un poco más rápido (aunque con alguna variabilidad
+en sus tiempos de inspección porque tiene menos experiencia), por
+lo que tendría un mejor paso. (Su tiempo de inspección tendrá una
+distribución de Erlang con media de 7.2 minutos y parámetro de 
+forma k = 2.) Este inspector se encuentra en una clasificación
+de puestos que requiere una compensación total (incluyendo prestaciones)
+de \$19 por hora, mientras que el inspector actual tiene una 
+clasificación más baja y gana \$17 por hora. (Los tiempos de 
+inspección de cada inspector son los normales en esa categoría en 
+la clasificación). \\\\
+Usted es el analista de IO en el 
+equipo de Jerry Castairs a quien le han pedido que estudie este
+problema. Él quiere ``que utilice las últimas técnicas
+en IO para ver cuánto disminuiría cada propuesta el 
+inventario en proceso para hacer sus recomendaciones''
+\\\\Enunciado tomado en su totalidad de \cite[p.~800]{libroIO2}
+\subsection{Análisis del estado actual}
+Comenzaremos el estudio evaluando la situación actual de la empresa.
+\subsubsection{Modelo}
+\begin{itemize}
+	\item Fase1
+		\begin{itemize}
+			\item \large{Notación: } \textbf{$M/M/10$}
+			\item \large{Proceso de entrada: } \textbf{Poisson}
+			\item \large{Tiempo de servicio: } \textbf{Exponencial}
+			\item \large{Tasa media de llegada: } \textbf{7 alas/hora}
+			\item \large{Tasa media de servicio: } \textbf{1 alas/hora}
+			\item \large{Servidores: } \textbf{10}
+		\end{itemize}
+	\item Fase2
+		\begin{itemize}
+			\item \large{Notación: } \textbf{$M/D/1$}
+			\item \large{Proceso de entrada: } \textbf{Poisson}
+			\item \large{Tiempo de servicio: } \textbf{Constante (Degenerado)}
+			\item \large{Tasa media de llegada: } \textbf{7 alas/hora}
+			\item \large{Tasa media de servicio: } \textbf{8 alas/hora}
+			\item \large{Servidores: } \textbf{1}
+		\end{itemize}
+\end{itemize}
+
+\subsubsection{Costo Total}
+Para poder evaluar el estado actual del sistema y poder compararlo con las propuestas
+posteriores es necesario calcular el costo total por hora en que se incurre utilizando
+el modelo actual, el cual se calcula de la siguiente forma: \\
+$ CostoTotal = \left(L_{1}+L_{2}\right)*8+7+17$ \\\\
+\subsection{Inventario en proceso}
+El inventario en proceso se refiere a la cantidad de hojas de metal en el sistema 
+fase1 (prensas) ya sea en la cola o en servicio denotada por $L_{s1}$ o simplemente $L_{1}$
+más la cantidad de secciones de ala en el sistema fase2 (inspección) denotado como
+$L_{2}$. Debido a que el resto de valores de interés son constantes, bastará 
+con calcular dichos valores.
+\subsubsection{Fase 1}
+Para el modelo M/M/s se tiene: \\\\
+\begin{large}
+$\lambda = 7$\\
+$\mu = 1$\\
+$ s = 10$\\
+\end{large}
+Sustituyendo en \ref{eq7:p0} se obtiene: $P_{0}=\frac{155520}{181993351}$\\\\
+Sustituyendo en \ref{eq1:lsDef} se obtiene: $L = 7.51737283706224$
+
+\subsubsection{Fase 2}
+Se sabe que el proceso de entrada para la fase 2 es un proceso de Poisson con media 7 
+debido a la Propiedad de Equivalencia (Ver marco teórico).\\
+Por tanto, para el modelo M/D/s se tiene: \\\\
+\begin{Large}
+$\lambda = 7$\\
+$\mu = 8$\\
+$s = 1$\\
+\end{Large}
+Sustituyendo en \ref{eq9:rho} se obtiene: $\rho = 0.875$ \\
+Sustituyendo en \ref{eq10:lqmds} se obtiene: $L_{q} = 3.0625$\\
+Sustituyendo en \ref{eq6:llq} se obtiene: $L = 3.9375$
+\subsubsection{Total}
+\noindent $CostoTotal = \left( L_{1} + L_{2} \right) 8 + 7 + 17$ \\
+$CostoTotal = \left( 7.51737283706224 + 3.9375 \right) 8 + 7 + 17$ \\
+$CostoTotal = 11.45487283706224*8 + 7 + 17$\\
+$CostoTotal = 115.64 $\\
+El sistema actual gasta un total de \$115.64 por hora para producir e inspeccionar
+los segmentos de ala.
+
+\subsection{Propuesta 1}
+La propuesta uno consiste en bajar la potencia de las prensas para aumentar el 
+tiempo de servicio medio a 1.2 horas disminuyendo de esta forma la tasa 
+de servicio media ($\mu$). La idea de esta estrategia es ahorrar 
+en el costo de energía y al mismo tiempo intentar bajar la tasa de llegadas a la fase 
+de 2 con el objetivo de tener menos unidades en cola en la fase 2.
+\subsubsection{Modelo}
+\begin{itemize}
+	\item Fase1
+		\begin{itemize}
+			\item \large{Notación: } \textbf{$M/M/10$}
+			\item \large{Proceso de entrada: } \textbf{Poisson}
+			\item \large{Tiempo de servicio: } \textbf{Exponencial}
+			\item \large{Tasa media de llegada: } \textbf{7 alas/hora}
+			\item \large{Tasa media de servicio: } \textbf{0.833 alas/hora}
+			\item \large{Servidores: } \textbf{10}
+		\end{itemize}
+	\item Fase2
+		\begin{itemize}
+			\item \large{Notación: } \textbf{$M/D/1$}
+			\item \large{Proceso de entrada: } \textbf{Poisson}
+			\item \large{Tiempo de servicio: } \textbf{Constante (Degenerado)}
+			\item \large{Tasa media de llegada: } \textbf{7 alas/hora}
+			\item \large{Tasa media de servicio: } \textbf{8 alas/hora}
+			\item \large{Servidores: } \textbf{1}
+		\end{itemize}
+\end{itemize}
+
+\subsubsection{Fase 1}
+Para el modelo M/M/s se tiene: \\\\
+\begin{large}
+$\lambda = 7$\\
+$\mu = 0.833$\\
+$ s = 10$\\
+\end{large}
+Sustituyendo en \ref{eq7:p0} se obtiene: $P_{0}= 0.000166659753221446$ \\\\
+Sustituyendo en \ref{eq1:lsDef} se obtiene: $L = 11.0488436584526$
+
+\subsubsection{Fase 2}
+Se sabe que el proceso de entrada para la fase 2 es un proceso de Poisson con media 7 
+debido a la Propiedad de Equivalencia (Ver marco teórico). Esta propiedad también 
+establece que, media vez el sistema no se encuentre sobrecargado (es decir que 
+el factor de utilizacion $\rho$ es menor que 1), entonces la tasa de llegada media
+es igual a la tasa de salida. En el caso de esta propuesta la idea es bajar 
+la tasa media de servicio con el objetivo de intentar bajar la tasa de salida 
+(y en consecuencia la tasa de llegada a la siguiente fase). Sin embargo, esta 
+estrategia no funcionará, ya que al bajar $\mu$ a 0.833 en consecuencia del aumento 
+en los tiempos de servicio, el sistema fase 1 efectivamente será mas lento y por 
+tanto aumentará la cantidad de unidades en cola. Sin embargo este cambio aún 
+no sobrecarga el sistema y por tanto no afectará la tasa de salida. En otras palabras, 
+esta estrategia no cumplirá su objetivo inmediato de bajar la tasa media de llegadas
+a la fase 2 y de hecho tendrá un efecto 
+contraproducente al mantener la tasa de llegadas a la fase 2 e incrementar la 
+cantidad de hojas de metal en cola de la fase 1.
+%La prueba de la Propiedad 
+%de Equivalencia en la que se basa esta conclusión 
+%está por fuera del alcance de este documento, sin embargo con el objetivo de probarle 
+%al lector que esta propuesta tendrá un efecto contraproducente para el sistema y 
+%mantendrá la tasa media de salidas, se provee una prueba empírica utilizando 
+%software de simulación (Simio) para el experimento. Esta prueba empírica puede
+%encontrarse en los anexos de este documento. 
+Los resultados presentados a continuación sobre la fase 2 
+son en efecto los mismos que aquellos presentados en el análisis del estado actual 
+del sistema, ya que como se ha dicho antes, la estrategia 1 no tendrá 
+ningún efecto sobre la 
+fase 2 y por tanto los resultados serán los mismos.\\\\
+\begin{Large}
+$\lambda = 7$\\
+$\mu = 8$\\
+$s = 1$\\
+\end{Large}
+Sustituyendo en \ref{eq9:rho} se obtiene: $\rho = 0.875$ \\
+Sustituyendo en \ref{eq10:lqmds} se obtiene: $L_{q} = 3.0625$\\
+Sustituyendo en \ref{eq6:llq} se obtiene: $L = 3.9375$
+\subsubsection{Total}
+\noindent $CostoTotal = \left( L_{1} + L_{2} \right) 8 + 6.5 + 17$ \\
+$CostoTotal = \left( 11.0488436584526 + 3.9375\right) 8 + 6.5 + 17$ \\
+$CostoTotal = 14.9863436584526*8 + 6.5 + 17$\\
+$CostoTotal = 143.40 $\\
+Tras implementar la propuesta 1, el sistema gastaría un total de 
+\$143.40 por hora para producir e inspeccionar
+los segmentos de ala. Como era de esperarse, los resultados de implementar esta
+propuesta serían contraproducentes para la empresa. Estos resultados se dan debido
+al aumento en el nivel de inventario en fase 1 y la conservación del nivel de 
+inventario en la fase 2 (fenómeno provocado por la Propiedad de Equivalencia).
+\subsection{Propuesta 2}
+La propuesta dos parece tener un mucho mejor acercamiento al problema ya 
+que la idea es sustituir al inspector actual por uno más veloz, con el 
+objetivo de aumentar la tasa de servicio y disminuir la cantidad de segmentos 
+de ala en cola. Esta estrategia sin embargo, involucra un aumento en la paga del
+nuevo inspector, por lo que se procederá a evaluar su viabilidad.
+\subsubsection{Modelo}
+\begin{itemize}
+	\item Fase1
+		\begin{itemize}
+			\item \large{Notación: } \textbf{$M/M/10$}
+			\item \large{Proceso de entrada: } \textbf{Poisson}
+			\item \large{Tiempo de servicio: } \textbf{Exponencial}
+			\item \large{Tasa media de llegada: } \textbf{7 alas/hora}
+			\item \large{Tasa media de servicio: } \textbf{1 alas/hora}
+			\item \large{Servidores: } \textbf{10}
+		\end{itemize}
+	\item Fase2
+		\begin{itemize}
+			\item \large{Notación: } \textbf{$M/E_{2}/1$}
+			\item \large{Proceso de entrada: } \textbf{Poisson}
+			\item \large{Tiempo de servicio: } \textbf{Distribución de 
+				Erlang con parametro k = 2.}
+			\item \large{Tasa media de llegada: } \textbf{7 alas/hora}
+			\item \large{Tasa media de servicio: } \textbf{8.333 alas/hora}
+			\item \large{Servidores: } \textbf{1}
+		\end{itemize}
+\end{itemize}
+\subsubsection{Fase 1}
+Esta estrategia no cambia en lo absoluto la fase 1 del sistema, por lo que 
+los resultados son exactamente los mismos. A manera de recordatorio,
+la cantidad esperada de unidades en el sistema para esta fase es:
+$ L = 7.51737283706224$
+\subsubsection{Fase 2}
+En base a la Propiedad de Equivalencia, para la fase 2 se tiene:
+Proceso de entrada de Poisson con media 7, tiempo entre servicios 
+de Erlang, 1 servidor, capacidad de cola infinita, disciplina FIFO, y población infinita.
+Por tanto, para el modelo $M/E_{k}/s$ se tiene: \\\\
+\begin{Large}
+$\lambda = 7$\\
+$\mu = 8.333$\\
+$k = 2$\\
+$s = 1$\\
+\end{Large}
+Sustituyendo en \ref{eq12:llq} se obtiene: $L_{q} = 3.30759591995092$\\
+Sustituyendo en \ref{eq6:llq} se obtiene: $L = 4.14759927996436$
+\subsubsection{Total}
+\noindent $CostoTotal = \left( L_{1} + L_{2} \right) 8 + 7 + 19$ \\
+$CostoTotal = \left( 7.51737283706224 + 4.14759927996436\right) 8 + 7 + 19$ \\
+$CostoTotal = 11.6658356172229*8 + 7 + 19$\\
+$CostoTotal = 119.326684937783$\\
+Al implementar la propuesta 2, se espera gastar un total de \$119.32 por hora
+para producir e inspeccionar los segmentos de ala. \\
+Estos resultados pueden parecer
+desalentadores a primera vista, ya que de hecho son ligeramente peores que los
+resultados obtenidos con el modelo actual. \\
+Sin embargo, es importante considerar que esta
+propuesta modela el tiempo de servicio del nuevo inspector con una distribución
+de Erlang con un parámetro k = 2. 
+La elección de esta distribución para el nuevo inspector no fué aleatoria. Es 
+importante analizar porqué se seleccionó esta distribución.\\
+Primero debemos conocer porqué la distribución Degenerada (constante) se escogió
+para el inspector actual. La razón es de hecho algo intuitiva: 
+Debido a la alta experiencia que el inspector actual tiene en la empresa, este
+ha logrado decrecer su varianza en los tiempos de servicio hasta el punto en que
+esta es 0 y por tanto sus tiempos de servicio son constantes. \\
+Ahora bien, este nuevo inspector aún no tiene la misma experiencia que el 
+actual y por tanto se espera que tenga cierta variabilidad en sus tiempos
+de servicio. Un modelo que describe tiempos de servicio con una alta variabilidad
+es el modelo exponencial, con una varianza de $\sigma = 1/\mu$. Sin embargo, 
+se ha investigado que el nuevo inspector no tiene una desviación estándar tan alta.
+Se sabe entonces que el nuevo inspector tendrá una varianza considerable, pero 
+no tan alta como la que se propone en el modelo exponencial y tampoco es 0 como en 
+el modelo degenerado. Para modelar este tipo de situaciones se utiliza la 
+distribución de Erlang, la cual es una distribución más general que se 
+ajusta a distintas varianzas utilizando para esto el parámetro k.
+Un parametro k  = 1 indica la mayor varianza posible = $\frac{1}{\mu^{2}}$
+mientras que un parámetro k = $\infty$ indica una varianza de 0.
+Se puede entonces utilizar k para modelar modelos con distintas varianzas, mientras
+mayor sea k, menor la varianza. Por esta razón se escogió esta distribución 
+y se investigó que un valor de k = 2 sería apropiado para diseñar el modelo 
+inicial.\\
+Ahora bien, conocer esta razón es importante porque aún si al momento de implementar
+esta estrategia y contratar al nuevo inspector no se obtiene ninguna ganancia, esto
+se debe a su alta variabilidad al comenzar el trabajo. Sin embargo, conforme 
+el nuevo inspector pase tiempo en la empresa y adquiera experiencia, se espera
+que este disminuya su variabilidad hasta llegar al punto en que consiga tanta
+experiencia en el trabajo como el inspector actual, en cuyo punto su varianza 
+sería 0 (o cercana a 0) y en ese punto ya se podrán obtener ganancias. 
+Por esta razón, esta estrategia no representa ganancias ni inmediatas ni a corto plazo,
+pero si representa ganancias a largo plazo. A continuación se adjuntan 2 gráficos 
+para ilustrar este proceso.\\
+\begin{figure}[h]
+\begin{center}
+	\includegraphics[width=250pt]{propuesta1-1.png}
+		 \caption{Gráfico del costo total por hora en función de la desviación estandar}
+\label{fig1:propuesta11}
+\end{center}
+\end{figure}	\\
+\begin{figure}[h]
+\begin{center}
+	\includegraphics[width=250pt,keepaspectratio]{propuesta1-2.png}
+		 \caption{Gráfico del costo total por hora en función del parámetro k}
+\label{fig2:propuesta12}
+\end{center}
+\end{figure} \\
+Como se observa en la figura (\ref{fig2:propuesta12}) el costo total por hora
+tras implementar la estrategia 2 es de \$119.33 (k = 2) lo cual es incluso
+un poco más alto
+que el precio por hora actual. Sin embargo, con forme k crece (El inspector adquiere
+más experiencia y disminuye su varianza) el precio por hora decrece, hasta el 
+punto en que su varianza sea casi 0 (tenga tanta experiencia como el inspector 
+actual) y el costo total por hora en ese punto sería de \$110.68 generando 
+finalmente un pequeño ahorro en comparación al modelo actual.
+\subsection{Propuesta 3}
+Tras análizar el fracaso de la propuesta 1 noté que esta fallaba por el hecho
+de alentizar la fase 1 y mantener el paso hacia la fase 2 en consecuencia de la
+Propiedad de Equivalencia. Por tanto, si se realiza la operación opuesta: 
+Acelerar el paso en la fase 1 y mantener el paso hacia la fase 2 entonces 
+deben obtenerse mejores resultados. Esta propuesta analiza esta opción.
+Por tanto esta propuesta aumentará al máximo la potencia de las máquinas aumentado
+sus tiempos de servicio medio a 0.8 horas. Se mantendrá el inspector actual.
+\subsubsection{Modelo}
+\begin{itemize}
+	\item Fase1
+		\begin{itemize}
+			\item \large{Notación: } \textbf{$M/M/10$}
+			\item \large{Proceso de entrada: } \textbf{Poisson}
+			\item \large{Tiempo de servicio: } \textbf{Exponencial}
+			\item \large{Tasa media de llegada: } \textbf{7 alas/hora}
+			\item \large{Tasa media de servicio: } \textbf{1.25 alas/hora}
+			\item \large{Servidores: } \textbf{10}
+		\end{itemize}
+	\item Fase2
+		\begin{itemize}
+			\item \large{Notación: } \textbf{$M/D/1$}
+			\item \large{Proceso de entrada: } \textbf{Poisson}
+			\item \large{Tiempo de servicio: } \textbf{Degenerada}
+			\item \large{Tasa media de llegada: } \textbf{7 alas/hora}
+			\item \large{Tasa media de servicio: } \textbf{8 alas/hora}
+			\item \large{Servidores: } \textbf{1}
+		\end{itemize}
+\end{itemize}
+\subsubsection{Fase 1}
+Para el modelo M/M/s se tiene: \\\\
+\begin{large}
+$\lambda = 7$\\
+$\mu = 1.25$\\
+$ s = 10$\\
+\end{large}
+Sustituyendo en \ref{eq7:p0} se obtiene: $P_{0}=0.00365721364027299$\\\\
+Sustituyendo en \ref{eq1:lsDef} se obtiene: $L = 5.68841994534135$
+
+\subsubsection{Fase 2}
+Debido a la Propiedad de Equivalencia y al hecho de que en esta propuesta 
+se conserva al inspector actual, por lo que los resultados
+de la segunda fase son exactamente iguales a los del estado actual del sistema.
+A modo de recordatorio se tiene: $L = 3.9375$
+\subsubsection{Total}
+\noindent $CostoTotal = \left( L_{1} + L_{2} \right) 8 + 7.5 + 17$ \\
+$CostoTotal = \left( 5.6884199453413 + 3.9375 \right) 8 + 7.5 + 17$ \\
+$CostoTotal = 9.62591994534135*8 + 7.5 + 17$\\
+$CostoTotal = 101.5073595627308$\\
+El costo total esperado por hora es de \$101.51. Como se puede observar, 
+los resultados son mucho mejores! Los resultados inmediatos
+son mucho mejores a ambas propuestas anteriores y esto se debe a la disminución 
+de hojas de metal en proceso en la fase 1 y el mantenimiento de la tasa de salida
+hacia la fase 2.
+\subsection{Propuesta 4}
+Tras el éxito de la propuesta 3 es importante considerar la estrategia que 
+implementaría la misma estrategia en la fase 1 pero al mismo tiempo contrataría 
+al nuevo inspector, para verificar que opción sería mas conveniente.
+\subsubsection{Modelo}
+\begin{itemize}
+	\item Fase1
+		\begin{itemize}
+			\item \large{Notación: } \textbf{$M/M/10$}
+			\item \large{Proceso de entrada: } \textbf{Poisson}
+			\item \large{Tiempo de servicio: } \textbf{Exponencial}
+			\item \large{Tasa media de llegada: } \textbf{7 alas/hora}
+			\item \large{Tasa media de servicio: } \textbf{1.25 alas/hora}
+			\item \large{Servidores: } \textbf{10}
+		\end{itemize}
+	\item Fase2
+		\begin{itemize}
+			\item \large{Notación: } \textbf{$M/E_{2}/1$}
+			\item \large{Proceso de entrada: } \textbf{Poisson}
+			\item \large{Tiempo de servicio: } \textbf{Distribución de 
+				Erlang con parametro k = 2.}
+			\item \large{Tasa media de llegada: } \textbf{7 alas/hora}
+			\item \large{Tasa media de servicio: } \textbf{8.333 alas/hora}
+			\item \large{Servidores: } \textbf{1}
+		\end{itemize}
+\end{itemize}
+\subsubsection{Fase 1}
+Esta estrategia no cambia en lo absoluto la fase 1 del sistema estudiada 
+en la propuesta 3, por lo que 
+los resultados son exactamente los mismos. A manera de recordatorio, se tiene:
+$ L = 5.68841994534135$
+\subsubsection{Fase 2}
+Debido a la Propiedad de Equivalencia, los resultados de la Fase 2 
+son exactamente iguales a aquellos estudiados en la 
+propuesta 2 por lo que a modo de recordatorio se tiene:
+$L = 4.14759927996436$
+\clearpage
+\subsubsection{Total}
+\noindent $CostoTotal = \left( L_{1} + L_{2} \right) 8 + 7.5 + 19$ \\
+$CostoTotal = \left( 5.68841994534135 + 4.14759927996436\right) 8 + 7.5 + 19$ \\
+$CostoTotal = 9.83601922530571*8 + 7.5 + 19$\\
+$CostoTotal = 105.18815380244568$\\
+El costo total por hora esperado es de \$105.19. 
+Como se puede observar, los resultados son mucho mejores a los del 
+sistema actual, sin embargo son un poco peores que los resultados de la estrategia 3.
+Esto se debe como se explicó con anterioridad debido a la alta variabilidad en los 
+tiempos de servicio del nuevo inspector. Sin embargo, tal como se explicó antes, 
+con forme el tiempo, se espera que el nuevo inspector gane experiencia (disminuya 
+su varianza) y se obtengan mejores resultados. A continuación un gráfico 
+del costo por hora esperado en función del parámetro k. A modo de recordatorio:\\
+k = 1 representa la máxima varianza y es igual a la distribución exponencial. \\
+k = 2 es el estado del modelo actual. \\
+k = $\infty$ representa una varianza de 0. 
+\begin{figure}[h]
+\begin{center}
+	\includegraphics[width=250pt,keepaspectratio]{propuesta2.png}
+		 \caption{Gráfico del costo total por hora en función del parámetro k}
+\label{fig3:propuesta2}
+\end{center}
+\end{figure}
+\clearpage
+\section{Resultados}
+A modo de resumen, se presenta un gráfico del costo total esperado por hora
+para cada una de las estrategias en función del parámetro k. \\
+\begin{figure}[h]
+\begin{center}
+	\includegraphics[width=250pt,keepaspectratio]{resultados.png}
+		 \caption{Gráfico del costo total por hora en función del parámetro k para cada una de las propuestas viables}
+\label{fig4:resultados}
+\end{center}
+\end{figure}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{  | m{5.5cm} | m{3cm} | m{3cm} | }
+ \hline
+	Propuesta & Costo (\$) & Ahorro (\$) \\ [0.5ex] 
+ \hline\hline
+	Estado Actual & 115.64 & 0 \\ 
+ \hline
+	Propuesta 1 & 143.40 & -27.76 \\ 
+ \hline
+	Propuesta 2 & 119.33 & -3.69 \\ 
+ \hline
+	Propuesta 3 & 101.51 & 14.13 \\ 
+ \hline
+	Propuesta 4 & 105.19 & 10.45 \\ [1ex]
+ \hline
+\end{tabular}
+	\caption{Costo total y ahorro esperado por hora para cada propuesta al
+	momento de su implementación. Fuente: Elaboración propia, 2020}
+\end{table}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{  | m{5.5cm} | m{3cm} | m{3cm} | }
+ \hline
+	Propuesta & Costo (\$) & Ahorro (\$) \\ [0.5ex] 
+ \hline\hline
+	Estado Actual & 115.64 & 0 \\ 
+ \hline
+	Propuesta 1 & 143.40 & -27.76 \\ 
+ \hline
+	Propuesta 2 & 109.54 & 6.1 \\ 
+ \hline
+	Propuesta 3 & 101.51 & 14.13 \\ 
+ \hline
+	Propuesta 4 & 96.42 & 19.22 \\ [1ex]
+ \hline
+\end{tabular}
+	\caption{Costo total y ahorro esperado por hora para cada propuesta a largo plazo.
+	Fuente: Elaboración propia, 2020.}
+\end{table}
+\clearpage
+\section{Conclusiones}
+\begin{itemize}
+	\item Se debe implementar la propuesta 4 para obtener el máximo ahorro.
+	\item El nuevo inspector tendrá una varianza relativamente alta al
+		ser contratado, impactando sus resultados negativamente. Sin embargo
+		con forme este adquiera más experiencia y disminuya su varianza
+		se obtendrán resultados mucho mejores.
+	\item Si un sistema de colas es del tipo M/M/s y 
+		no se encuentra sobrecargado ($\rho < 1$)
+		entonces la tasa de salidas es igual a la tasa de llegadas.
+\end{itemize}
+\section{Recomendaciones}
+La estrategia final a implementar para obtener el máximo ahorro es la siguiente:\\\\
+Contratar al nuevo inspector más jóven y reemplazar al inspector actual. 
+Aumentar la potencia de las máquinas al máximo.\\\\
+Estas 2 simples acciones tendrán un gran impacto en el sistema y generarán el máximo 
+ahorro. Esto debido a que las máquinas serán capaces de procesar las hojas 
+de metal más rápido (0.8 horas) disminuyendo así considerablemente la cantidad
+de hojas de metal que se encuentran en la fase 1 de producción. Además de esto,
+el nuevo inspector si bien tendrá resultados similares al inspector actual y encima
+necesitará un pago mayor al momento de ser contratado, conforme este adquiera más
+experiencia y disminuya su varianza el nuevo inspector obtendrá resultados 
+mucho mejores al inspector actual, agregando valor a largo plazo. En cambio, 
+el inspector actual ya está al máximo de sus capacidades (varianza de 0) y por 
+tanto le será imposible mejorar a lo largo del tiempo y por tanto no agregará
+valor a largo plazo. \\\\
+El ahorro total con esta nueva estrategia se estima en 
+exactamente \$19.22 por hora. Utilizando el estándar de 173.33 horas de trabajo
+por mes, el ahorro total por mes se estima en \$3331.40\\
+Se le recomienda a los altos mandos implementar esta estrategia lo antes posible.
+\clearpage
+\section{Anexos}
+\begin{figure}[h]
+\begin{center}
+	\includegraphics[width=\textwidth,keepaspectratio]{diagrama1.png}
+		 \caption{Mapa mental de los conceptos básicos de teoría de colas}
+\label{fig5:mapa}
+\end{center}
+\end{figure}
+\begin{figure}[h]
+\begin{center}
+	\includegraphics[width=\textwidth,keepaspectratio]{diagrama2.png}
+		 \caption{Mapa mental de los modelos más comunes y estudiados 
+		 de la teoría de colas}
+\label{fig6:mapa}
+\end{center}
+\end{figure}
+\begin{figure}[h]
+\begin{center}
+	\includegraphics[width=\textwidth,keepaspectratio]{modelo1.png}
+		 \caption{Vista en 2D de la simulación del sistema utilizando Simio}
+\label{fig6:mapa}
+\end{center}
+\end{figure}
+\begin{figure}[h]
+\begin{center}
+	\includegraphics[width=\textwidth,keepaspectratio]{modelo2.png}
+		 \caption{Vista en 3D de la simulación del sistema utilizando Simio}
+\label{fig6:mapa}
+\end{center}
+\end{figure}
+
+Link de la simulación funcionando: \textcolor{blue}{https://youtu.be/mR1qPBKjb48}
+%\begin{large}
+%	Link de la simulación funcionando: 
+%	\href{https://youtu.be/mR1qPBKjb48}{https://youtu.be/mR1qPBKjb48}
+%\end{large}
+%~\cite{libroION2}
+%~\cite{libroION3}
+%~\cite{libroION4}
+%Aftewards you must re-compile the bibliography like so:
+%!bibtex investigacion
+%Then delete the citations and re-compile pdflatex like so:
+%!pdflatex -synctex=1 -interaction=nonstopmode %
+\bibliographystyle{apacite}
+\bibliography{proyecto2.bib}
+\end{document}

@@ -1,0 +1,31 @@
+\documentclass{article}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry} 
+\usepackage{graphicx} 
+%\usepackage[section]{placeins} 
+\usepackage[spanish]{babel}
+
+%------------------------------ Constants ---------------------------------
+\newcommand{\nombre}{Renato Flores}
+\newcommand{\carnet}{201709244}
+\newcommand{\universidad}{USAC}
+\newcommand{\catedratico}{Ing. Allan Morataya}
+\newcommand{\curso}{Sistemas Operativos 1}
+\newcommand{\titulo}{Pregunta 4, examen final}
+%----------------------- Custom commands ------------------------------
+\author{\nombre , \carnet}
+\title{\textbf{\Huge\titulo}}
+
+\graphicspath{{/home/renato/screenshots/}}
+\begin{document}
+\maketitle
+
+\begin{figure}[h]
+        \includegraphics[width=\textwidth,keepaspectratio]{tdc.png}
+                 \caption{Transofrmada Discreta en Cosenos}
+\end{figure}	
+Como se puede observar, se utilizaron los comandos dct para calcular
+la transformada discreta en cosenos con el parametro type = 2.
+Para recuperar la señal original, se utiliza el mismo comando
+pero con parametro type = 3 y se aplica sobre la nueva señal para 
+recuperarla. 
+\end{document}

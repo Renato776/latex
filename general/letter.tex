@@ -1,0 +1,134 @@
+\documentclass{letter} 
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry} 
+\usepackage[spanish]{babel}	%
+\usepackage{amsmath} 
+% ---------------------- Custom comands -----------------------------
+\newcommand*\rbreak{\par\noindent\linebreak} %My own custom linebreaks!
+
+\begin{document}
+\begin{letter}{Ing. Fernando Jose Alvarez Paz}
+  \opening{Estimado Ingeniero,}
+Comenzaré esta discusión citando el enunciado del problema. \\
+``El estado de cada estudiante se observa al comienzo de cada 
+trimestre por otoño. Por ejemplo, si un estudiante está en penúltimo
+año al comienzo del trimestre del otoño actual, hay una probabilidad
+de 80\% 
+de que esté en el último año al comienzo del siguiente trimestre de 
+otoño, 15\% de probabilidades de que aún sea estudiante de penúltimo
+año y 5\% de que haya sido dado de baja. ( suponga que una vez 
+que el estudiante abandona la escuela, nunca regresa ). Con este texto
+responda. \\
+Si un estudiante entra en State College como principiante
+¿Cuántos años espera pasar como estudiante de State College? 
+(solo escriba el número con 4 decimales), así como, la siguiente 
+pregunta del exámen.''
+
+Tras leer el enunciado, es imposible evitar notar algunos detalles que
+hacen que el enunciado se sienta fuera de lugar.
+  \begin{itemize} 
+    \item En la primera pregunta, se hace referencia al nombre de 
+      la institución (State College) Y se habla de ella como 
+      si se nos hubiera introducido en el texto. Sin embargo, 
+      en el enunciado nunca se hace referencia a la institución 
+      sobre la cuál se realiza el estudio.
+    \item En el enunciado se habla explicitamente sobre un penúltimo año
+      y un último año. Sin 
+      embargo, no otra información referente a la cantidad total de 
+      años en la carrera es proveída. En las siguientes preguntas 
+      se habla de un año principiante, por lo que ahora sabemos que 
+      existen principiante, penúltimo y último. En ningún momento
+      se habla o se hace referencia a la existencia de otros años en 
+      la carrera.
+    \item En el enunciado se nos provee explícitamente con 
+      la distribución de probabilidad completa para el penúltimo año. 
+      Sin embargo, no otra información explicita es proveída referente al 
+      comportamiento de los otros años.
+  \end{itemize}
+  En vista de lo ambiguo del enunciado, 
+  algunos solicitaron la cantidad de años a lo cual se respondió 
+  que se usaran únicamente los datos dados en el enunciado. Demostrando 
+  así que la carrera estudiada solo podría ser de 3 años. \\
+  Habiendo aclarado esto, aún quedaban detalles que parecían faltar en el
+  enunciado. Sin embargo, tras re-leer el enunciado varias veces
+  finalmente encontré 
+  la respuesta. Efectivamente, el enunciado estaba completo y era
+  posible su solución empleado estrictamente y únicamente la información
+  proveída en el texto. A continuación se presenta dicha solución.
+
+  \begin{enumerate}
+    \item Cuántos años existen en la carrera estudiada? \\
+      En vista que el texto únicamente habla de 3 años, es imposible
+      concluir otra cantidad.
+    \item Cual es la distribución de probabilidad de cada año? \\
+      A primera vista, podrá parecer que es imposible responder 
+      esta pregunta únicamente con el texto planteado, pues este 
+      únicamente nos habla de uno de los años. Sin embargo, si se estudia
+      el texto mas detenidamente, se observa que las probabilidades 
+      de cambio de estado de cada estudiante siguen la misma tendencia
+      para todos los años. Esto se 
+      hace notable al leer la palabra `` Por ejemplo '' la cual 
+      alude al hecho de que todos los años se comportan de manera 
+      identica, y por tanto proveer un ejemplo de uno de estos años
+      es más que suficiente para que el lector generalice hacia los 
+      siguientes años en la carrera.\\ 
+      Tomando siempre la tendencia: 80\% avanzar de año. 5\% abandonar. 
+      15\% repetir.
+    \item Matriz de probabilidad \\
+      $\left[\begin{matrix}  & principiante & penultimo & ultimo & graduados & deserciones
+      \\principiante & 0.15 & 0.8 & 0 & 0 & 0.05\\penultimo & 0 & 0.15 & 0.8 & 0 & 0.05
+      \\ultimo & 0 & 0 & 0.15 & 0.8 & 0.05\\graduados & 0 & 0 & 0 & 1 & 0
+      \\deserciones & 0 & 0 & 0 & 0 & 1\end{matrix}\right]$
+  \end{enumerate}
+  El resto del procedimiento para responder las preguntas 1 y 2 es 
+  facilmente obtenible a partir del punto 3. Obteniendo finalmente 
+  las respuestas: 
+  3.3217 años para la primer pregunta y una probabilidad de 
+  0.8337 para la segunda. \\\\ 
+  Ahora bien, fue para mí una gran sorpresa descubrir que estas 
+  respuestas no habían sido aceptadas como correctas. Tras 
+  consultar con algunos compañenos de clase que aparentemente 
+  obtuvieron la respuesta correcta, descubrí lo que había sucedido.\\
+  Tal parece que, el enunciado escrito en el parcial ya se nos había dado
+  con anterioriadad. Este era uno de los problemas dados en la tarea
+  preparatoria. Sin embargo, hay una gran diferencia respecto a estos 
+  problemas. En el enunciado presentado en la tarea, se presentaba 
+  una tabla que mostraba claramente y sin lugar a dudas el comportamiento
+  de cada año ademas de listar todos los años que duraba la carrera
+  en el estudio. \\
+  Esta tabla sin embargo, fue omitida del enunciado del parcial. Con el
+  objetivo de añadir claridad, a continuación se presenta dicha tabla.\\
+  $\left[\begin{matrix}  & principiante & segundo & penultimo & ultimo & deserciones & graduados\\principiante & 0.1 & 0.8 & 0 & 0 & 0.1 & 0\\segundo & 0 & 0.1 & 0.85 & 0 & 0.05 & 0\\penultimo & 0 & 0 & 0.15 & 0.8 & 0.05 & 0\\ultimo & 0 & 0 & 0 & 0.1 & 0.05 & 0.85\\deserciones & 0 & 0 & 0 & 0 & 1 & 0\\graduados & 0 & 0 & 0 & 0 & 0 & 1\end{matrix}\right]$ \\\\
+  Tras emplear esta matriz para el resto del procedimiento, 
+  las respuestas son efectivamente las que se indican como correctas. \\
+  Sin embargo, tras estudiar dicha matriz y el texto presentado en 
+  el enunciado del parcial, es imposible que se haya podido llegar a 
+  esa conclusion. \\ La prueba es la siguiente: \\
+  \begin {itemize}
+  \item En el enunciado del parcial, en ningún momento
+    y de ninguna manera, ya sea directa o 
+    indirectamente se habla de la existencia de un segundo año 
+    ubicado entre principiante y penúltimo. No hay ninguna manera 
+    lógica de poder concluir que dicho año existe y se encuentra en 
+    esa posicion.
+  \item El comportamiento de cada año varia ligeramente de manera
+    arbitraria. Por ejemplo, el ultimo año tiene una probabilidad 
+    del 85\% de avanzar (graduarse) pero el penultimo año 
+    tiene una probabilidad del 80\% de avanzar. Este es únicamente 
+    un ejemplo, puesto que todos los años varían su comportamiento
+    ligeramente. Tambien es importante notar que no siguen 
+    ningun patron en cuanto al cambio en su comportamiento. 
+    Por tanto, es imposible que se hayan podido deducir dichas 
+    distribuciones de probabilidad en base unicamente al texto del 
+    enunciado.
+  \end {itemize}
+  En consecuencia, la única forma en que alguien pudo haber llegado
+  a dicha matriz es copiandola directamente del enunciado de la tarea.
+  Sin embargo, dado que el exámen no tenía la tabla presente en la 
+  tarea, es evidente que son problemas distintos con respuestas 
+  diferentes. \\\\
+  Espero su respuesta y agradezco inmensamente su comprensión y 
+  consideración. 
+  \closing{Atentamente, Renato Flores}
+
+\end{letter}
+\end{document}

@@ -1,0 +1,105 @@
+\documentclass{article} 
+\usepackage[left=1cm,right=1cm,top=1cm,bottom=1cm]{geometry} 
+\usepackage[spanish]{babel}
+\usepackage{listings}     
+\usepackage{xcolor} 
+\setcounter{secnumdepth}{0}
+\usepackage{titlesec}
+\titleformat{\section}[block]
+  {\Large\bfseries\filcenter}	
+  {} 
+  {1em}
+  {}
+
+%------------------------------ Constants ---------------------------------
+\newcommand{\nombre}{Renato Flores}
+\newcommand{\carnet}{201709244}
+\newcommand{\curso}{Sistemas Operativos 1}
+\newcommand{\titulo}{Hoja de Trabajo, Semaforos y Mensajes}
+%----------------------- Custom commands ------------------------------
+\newcommand*\rbreak{\par\noindent\linebreak}
+%% ----- Code highliting style specification -----------------
+\lstdefinestyle{customc}{
+  belowcaptionskip=1\baselineskip,
+  breaklines=true,
+  %frame=L,
+ % xleftmargin=\parindent, 
+ % Use the commented options above if you'd like a left margin for the code block.
+ % useful to highlight the fact that is a code snippet.
+  language=C,
+  showstringspaces=false,
+  basicstyle=\footnotesize\ttfamily,
+  keywordstyle=\bfseries\color{green!40!black},
+  commentstyle=\itshape\color{purple!40!black},
+  identifierstyle=\color{blue},
+  stringstyle=\color{orange},
+}
+\lstset{style=customc} 
+%% ----------------------- Actual document ------------------------------
+
+\author{\nombre , \carnet}
+\title{\titulo}	
+
+\begin{document}
+\maketitle
+
+\section{Semaforos}
+
+\subsection{Problema de Baile de Salón}
+\begin{lstlisting}
+Semaforo S1,S2,S3,S4 = 0;
+
+Hombre(){
+  up(S1); down(S2);
+  Bailar();
+  down(S3); up(S4);
+}
+
+Mujer(){
+  down(S1); up(S2);
+  Baliar();
+  up(S3); down(S4);
+}
+
+\end{lstlisting} 
+
+\subsection{Babuinos}
+\begin{lstlisting}
+ Semaforo S,recurso = 1;
+ int cuentaRec = 0;
+ 
+ On(sem,recurso,cuentaRec){
+    down(sem);
+    cuentaRec = cuentaRec + 1
+    if ( cuentaRec == 1) down(recurso);
+    up (sem);
+ }
+
+ Off(sem,recurso,cuentaRec){
+    down(sem);
+    cuentaRec = cuentaRec - 1;
+    if ( cuentaRec == 0) up(recurso);
+    up (sem);
+ }
+
+ Babuino(babuino,sem,recurso,cuentaRec){
+    down(babuino);
+    On(sem,recurso,cuentaRec);
+    CruzaBabuino();
+    Off(sem,recurso,cuentaRec);
+    up(babuino);
+ }
+
+ Semaforo semIda, semVuelta = 1;
+ Semaforo babIda = 5, babVuelta = 5;
+ Semaforo rec = 1;
+ int cuentaIda, cuentaVuelta = 0;
+ BabuinoIda(){
+   Babuino(babIda,semIda,rec,ceuntaIda);
+ }
+ BabuinoVuelta(){
+    Babuino(babViene, semVuelta,rec,cuentaVuelta);
+ }
+
+\end{lstlisting} 
+\end{document}

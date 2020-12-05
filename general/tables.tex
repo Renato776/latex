@@ -1,0 +1,195 @@
+\documentclass{article}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry} 
+\usepackage{blindtext}
+\usepackage{graphicx} 
+\usepackage[section]{placeins} 
+\usepackage[spanish]{babel}
+\usepackage{listings} 
+\usepackage{xcolor} 
+\usepackage{pdfpages}
+\usepackage{array} 
+\usepackage{textcomp}
+\setcounter{secnumdepth}{2}
+
+%----------------------- Custom commands ------------------------------
+\newcommand*\rbreak{\par\noindent\linebreak}
+%------------------------------ Constants ---------------------------------
+\newcommand{\nombre}{Renato Flores}
+\newcommand{\carnet}{201709244}
+\newcommand{\titulo}{Tarea \#7\rbreak Sobre conceptos de agilidad y Lean}
+
+\author{\nombre , \carnet}
+\title{\textbf{\Huge\titulo}}
+
+
+\begin{document}
+\maketitle
+\section{Coloque el ciclo de vida del proyecto (Predictivo, Incremental, Iterativo, Ágil) de cada uno de los siguientes enunciados.}
+\begin{tabular}{  | m{12cm} | m{3cm} | }
+	\hline
+	\parbox[t]{12cm}{
+	 Combina ciclos iterativos e incrementales,
+	 realizando iteraciones sobre un 
+	 producto para obtener entregables intermedios
+	 listos para usar en cada 
+	 lanzamiento a lo largo del ciclo del proyecto.
+	} & Ágil \\\hline
+	 \parbox[t]{12cm} {
+		 En las primeras iteraciones se entrega una funcionalidad básica y se va
+		 agregando mayor funcionalidad al producto a medida que avanzan las
+		 fases del proyecto.
+	}	& Incremental \\\hline
+	 \parbox[t]{12cm} {
+En las primeras iteraciones se va construyendo un borrador del producto
+final mediante el análisis-desarrollo-reflexión y en las fases sucesivas se va
+agregando calidad al producto con más análisis-desarrollo-reflexión.
+	}	& Iterativo \\\hline
+	 \parbox[t]{12cm} {
+		 Hasta que no finaliza o está avanzada la fase predecesora, no comienza su sucesora
+	}	& Predictivo \\\hline
+\end{tabular}
+
+\section{ Coloque en cada uno de los siguientes cuadrantes
+el ciclo de vida del proyecto (Predictivo,Incremental, Iterativo, Ágil) más recomendado.}
+\begin{center}
+\begin{tabular}{ | m{6cm} | m{6cm} |  }
+	\hline
+  Incremental & Agil \\\hline
+  Predictivo & Iterativo \\\hline
+\end{tabular}
+\end{center}
+\section{Complete los cuadros en blanco de la siguiente 
+tabla con las palabras ``fijo'' o ``flexible'' }
+
+\begin{center}
+\begin{tabular}{ | c | c | c | c |  }
+	\hline
+	Ciclo de vida & Costo & Tiempo & Alcance \\\hline
+	Predictivo & flexible & fijo & flexible \\
+	Adaptivo & flexible & flexible & fijo \\\hline
+\end{tabular}
+\end{center}
+
+\section{Unir con flechas los siguientes conceptos del Manifiesto Ágil}
+\begin{itemize}
+	\item Colaboración con el cliente \textrightarrow  sobre negociación contractual
+	\item Software funcionando \textrightarrow sobre documentación extensiva
+	\item Individuos e interacciones \textrightarrow sobre procesos y herramientas
+	\item Respuesta ante el cambio \textrightarrow	sobre seguir un plan
+\end{itemize}
+\section{Marque con una cruz a qué filosofía corresponde 
+cada uno de los siguientes principios}
+
+\begin{tabular}{  | m{11cm} | m{2cm} | m{2cm} | }
+	\hline
+	Principio & Manifesto Ágil & Declaración de la Interdependencia \\\hline
+	\parbox[t]{11cm}{
+		Aceptamos que los requisitos cambien, incluso
+		en etapas tardías del desarrollo.
+	} & X &   \\\hline
+	\parbox[t]{11cm}{
+		Disparamos el rendimiento mediante la 
+		responsabilidad común sobre los resultados
+		y sobre la propia efectividad del equipo
+	} &   & X \\\hline
+	\parbox[t]{11cm}{
+		Entregamos software funcional frecuentemente,
+		entre dos semanas y dos meses.
+	} & X &   \\\hline
+	\parbox[t]{11cm}{
+		Esperamos lo inesperado y lo gestionamos 
+		mediante iteraciones, anticipación y 
+		adaptación.
+	} & X &   \\\hline
+	\parbox[t]{11cm}{
+		Incrementamos el retorno de la inversión 
+		centrándonos en un flujo continuo de valor.
+	} & X &   \\\hline
+	\parbox[t]{11cm}{
+		La simplicidad, o el arte de maximizar la
+		cantidad de trabajo no realizado, es esencial.
+	} &   & X \\\hline
+	\parbox[t]{11cm}{
+		Nuestra mayor prioridad es satisfacer 
+		al cliente mediante la entrega temprana y 
+		continua de valor.
+	} & X &   \\\hline
+\end{tabular}
+
+\section{Coloque del 1 a 5, según el orden cronológico del 
+Marco Ágil propuesto por Jim Highsmith}
+
+\begin{center}
+\begin{tabular}{ | c | c | }
+	\hline
+	\# & Fases \\\hline
+	3 & Adaptacion (Adapt) \\
+	5 & Cierre (Close) \\
+	2 & Especulacion (Speculate) \\
+	4 & Exploracion (Explore) \\
+	1 & Visualizacion (Envision) \\\hline
+\end{tabular}
+\end{center}
+
+\section{Complete en qué fase del Marco Ágil de Jim Highsmith se 
+realiza cada una de las siguientes actividades.}
+
+\begin{center}
+\begin{tabular}{ | c | c | }
+	\hline
+	Fase & Actividad \\\hline
+	Explorar & Aprender e incorporar el aprendizaje al siguiente equipo de proyecto \\
+	Especular & Crear una declaración del alcance del producto y sus criterios de éxito \\
+	Visualizar & Desarrollar un plan de lanzamiento, hitos e iteraciones\\
+	Cerrar & Entregar funcionalidades en un corto periodo de tiempo\\
+	Adaptar & Realizar correcciones, incorporar y retener las lecciones aprendidas\\\hline
+
+\end{tabular}
+\end{center}
+
+\section{¿Cuáles son las 6 capas de la cebolla de planificación ágil propuestas por Mike Cohn?}
+
+\begin{center}
+\begin{tabular}{ | c | c | }
+	\hline
+	\# & Capa \\\hline
+	1 & Estrategica \\
+	2 & Portafolio \\
+	3 & Producto \\
+	4 & Despliegue \\
+	5 & Iteracion\\
+	6 & Diaria \\\hline
+\end{tabular}
+\end{center}
+
+\section{Complete las palabras que faltan en cada uno de los 
+principios del pensamiento Lean}
+
+\begin{enumerate}
+	\item Especificar con precision el \textbf{valor} 
+		de cada proyecto
+	\item Definir el \textbf{flujo o cadena} de valor del proyecto
+	\item Permitir que el valor \textbf{fluya continuamente} 
+		sin interrupciones
+	\item Permitir que el \textbf{cliente} participe en 
+		la identificacion del ``valor''
+	\item Buscar de manera \textbf{constante} la perfeccion
+\end{enumerate}
+
+\section{Nombre 3 de los 7 desechos más comunes que hay que 
+eliminar del flujo de valor}
+	\begin{itemize}
+		\item Sobreproducción
+		\item Transporte
+		\item Sobre procesamiento
+	\end{itemize}
+	
+\section{En base a la filosofía Lean, complete el párrafo con 
+alguna de las siguientes frases: ``Lo antes posible''
+/ ``Lo más tarde posible '' / ``En el último momento responsable''}
+
+Para no entorpecer el flujo de valor con demoras, deberíamos decidir
+\textbf{en el último momento responsable} punto óptimo de
+la compensación entre el tiempo disponible para una 
+decisión y la necesidad de desarrollar un producto.
+\end{document}

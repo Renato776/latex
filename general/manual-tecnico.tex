@@ -1,0 +1,375 @@
+\documentclass{article} 
+\usepackage[left=1cm,right=1cm,top=1cm,bottom=1cm]{geometry} 
+\usepackage[spanish]{babel}
+\usepackage{listings}     
+\usepackage{xcolor} 
+\setcounter{secnumdepth}{0}
+\usepackage{titlesec}
+\titleformat{\section}[block]
+  {\Large\bfseries\filcenter}	
+  {} 
+  {1em}
+  {}
+
+%------------------------------ Constants ---------------------------------
+\newcommand{\nombre}{Renato Flores}
+\newcommand{\carnet}{201709244}
+\newcommand{\curso}{Sistemas Operativos 1}
+\newcommand{\titulo}{Proyecto \#1}
+%----------------------- Custom commands ------------------------------
+\newcommand*\rbreak{\par\noindent\linebreak}
+%% ----- Code highliting style specification -----------------
+\lstdefinestyle{customc}{
+  belowcaptionskip=1\baselineskip,
+  breaklines=true,
+  %frame=L,
+ % xleftmargin=\parindent, 
+ % Use the commented options above if you'd like a left margin for the code block.
+ % useful to highlight the fact that is a code snippet.
+  language=C,
+  showstringspaces=false,
+  basicstyle=\footnotesize\ttfamily,
+  keywordstyle=\bfseries\color{green!40!black},
+  commentstyle=\itshape\color{purple!40!black},
+  identifierstyle=\color{blue},
+  stringstyle=\color{orange},
+}
+\lstset{style=customc} 
+%% ----------------------- Actual document ------------------------------
+
+\author{\nombre , \carnet}
+\title{\titulo}	
+
+\begin{document}
+\maketitle
+
+\section{Aplicación Cliente}
+La aplicación cliente es una aplicación de terminal interactiva escrita
+en python. La aplicación utiliza la libreria de python Requests para enviar las peticiones al servidor.
+Esta aplicación es extremadamente minimalista tanto en su implementación como en su uso final.
+Presenta 4 opciones:
+\begin{enumerate}
+  \item Enviar datos \\
+    Recibe la ruta absoluta de un archivo de texto. El archivo
+    es dividido en oraciones y estas se envian como publicaciones
+    al servidor. Estas publicaciones se envian bajo la autoria del
+    usuario activo. El usuario debio haber seleccionado la opcion
+    de registrarse con anterioridad para ser reconocido como el 
+    autor de las publicaciones. Sin un usuario envia publicaciones
+    sin identificarse primero, el usuario anonimo sera identificado
+    como el autor.
+  \item Balanceador \\
+    Recibe la direccion http del servidor al cual enviar la informacion.
+    Por default se utiliza el balanceador de carga implementado por mi.
+    Si se desea utilizar un balanceador o servidor diferente, ingresar
+    la direccion completa en este apartado. Es importante 
+    que la direccion sea un una direccion http completa del tipo:
+    \textit{http://url:port/path}  Tanto el puerto como la direccion
+    del recurso deben ser especificados en la direccion del balanceador.
+    No utilizar simplemente la URL!
+  \item Show \\
+    Esta opcion muestra todos los mensajes enviados al servidor 
+    en la sesion actual junto con su respectivo autor.
+    Tambien muestra la direccion de servidor utilizada actualmente 
+    por la aplicacion.
+  \item Autor \\
+    Esta opcion sirve para que el usuario pueda identificarse, 
+    simplemente debes escribir tu nombre con el cual deseas 
+    firmar tus publicaciones y este sera utilizado cuando 
+    envies los datos. Puedes cambiar de usuario en cualquier momento.
+\end{enumerate}
+
+\section{Servidor(s) 1}
+El Servidor 1 tiene como tarea funcionar de una manera similar
+a un balanceador de carga cacero. El objetivo es que este 
+pregunte por el estado de los dos servidores destino (A y B).
+En base al estado de estos, el Servidor 1 debe escoger hacia
+que servidor se debera enviar la carga.
+
+Este servidor contiene una API REST escrita en Python con la 
+ayuda de la libreria Flask. Al igual que la aplicacion 
+cliente esta es muy sencilla en su implementacion, ya 
+que unicamente tiene una tarea:\\
+Verificar el estado de ambos servidores destino y enviar 
+el paquete recibido al servidor que mas le convenga, basandose
+en la cantidad de elementos insertados, CPU utilizado en ese 
+momento y RAM utilizada. Esta aplicacion 
+se encuentra alojada en el puerto 5000 y esta desplegada 
+sobre un contenedor de Docker basico.
+
+\section{Servidor A y B}
+
+Estos servidores son los mas importantes del sitema entero.
+Estos se encargan de almacenar las publicaciones de los 
+clientes y se encargan de exponer una API REST por medio de la
+cual estos pueden ser monitorizados en cualquier momento. \\
+Estos servidores tienen desplegados 3 piezas de software muy importantes:
+\begin{itemize}
+  \item Una API REST implementada en Python con ayuda de Flask 
+    utilizada para exponer metricas respecto a la utilizacion 
+    de los recursos del servidor.
+  \item Una base de datos noSQL utilizada para almacenar las 
+    publicaciones de los clientes.
+  \item 2 Modulos del Kernel personalizados para proveer 
+    estadisticas de uso en cualquier momento de los recursos 
+    del servidor.
+\end{itemize}
+
+La aplicacion REST es muy sencilla y basica, simplemente 
+consulta el contenido de los archivos de proceso generados 
+por los modulos del kernel y los expone. Tambien 
+tiene endpoints utilizados para guardar y exponer publicaciones.\\\\
+La base de datos noSQL implementada es MongoDB y se implemento
+en la forma de un contenedor de Docker. Tanto la base datos como la 
+API rest se implementaron como contenedores en vez de instalarlos 
+directamente en el servidor.\\\\
+\subsection{Modulos del Kernel}
+Los modulos del kernel implementados especificamente 
+para el monitoreo del servidor son los siguientes:
+\subsubsection{Monitor-CPU}
+Este modulo indica la fraccion de uso del CPU. Este uso
+es agregado y se basa en el uso de todos los cores del servidor. 
+(En este caso, las instancias EC2 que alojan estos servidores
+solo tienen un core, pero en teoria, si el servidor tuviera 
+mas nucleos, la estadistica mostrada como uso del CPU seria 
+en promedio por todos los nucleos). 
+La fraccion de uso del CPU que calcula este modulo se 
+calcula de la siguiente manera:
+
+$ CPU = (B(t+1) - B(t))/(T(t+1) - T(t))$ \\
+$ B(t) =  user + nice + system + iowait + irq + softirq + steal $ \\
+$ T(t) =  idle + user + nice + system + iowait + irq + softirq + steal $ \\
+
+Donde: 
+\begin{itemize}
+  \item user: Tiempo utilizado en ejecutar procesos en modo usuario.
+  \item nice: Tiempo empleado en procesos de baja prioridad ejecutandose en modo usuario.
+  \item system: Tiempo empleado en procesos ejecutandose en el kernel.
+  \item iowait: Tiempo en que el procesador espera una operacion de E/S.
+  \item irq: Tiempo sirviendo interrupciones por hardware.
+  \item softirq: Tiempo sirviendo interrupciones por software.
+  \item idle: Tiempo en que el CPU ha estado holgazan. (En espera de instrucciones)
+\end{itemize}
+Estos valores son medidos en unidades de tiempo denominadas 
+generalmente como Jiffies (Usualmente centesimas de segundo)
+Y es la cantidad de tiempo dedicado a cada una de estas categorias por
+el cpu desde que el sistema se ha encendido hasta el instante t. \\\\
+B(t) hace referencia al tiempo total que el CPU ha sido utilizado 
+desde que se encendio el sistema (Busy). T(t) hace referencia
+al tiempo total que ha estado el CPU encendido, ya sea ocupado (busy)
+o holgazan (idle). \\
+Estos numeros no nos dicen nada por si solos, pues a nosotros 
+nos interesa la fraccion de uso del CPU en un instante t.
+Para lograr esto, se aplica un concepto similar al de una derivada.\\
+En teoria el porcentaje de uso del CPU en un instante t es igual 
+al tiempo que el cpu ha estado ocupado en ese instante sobre la cantidad
+de tiempo total que el cpu ha estado encendido en ese instante. 
+En teoria, es imposible obtener el porcentaje de uso del cpu en 
+un instante t, ya que si el intervalo de tiempo tiende ha ser 
+tan pequeno que llega a ser un diferencial de tiempo, el tiempo 
+de uso y encendido en ese intervalo sera 0. \\
+Por esta razon, no se utilizo un intervalo de tiempo tan 
+pequeno como lo seria un micro-segundo. Aun si el Kernel acepta 
+tiempo de espera tan pequenos. Si se hubiera escogido un intervalo 
+de tiempo tan pequeno para calcular el porcentaje de uso del CPU, 
+este numero hubiera sido demasiado volatil e impredecible que 
+no aportaria ninguna informacion util. El intervalo de tiempo
+que finalmente se escogio para el calculo del porcentaje de uso 
+en un instante t, es de 0.5 segundos.
+
+Ahora bien, debido a que C no maneja de la mejor manera el formateo 
+de numeros de punto flotante cuando estos alcanzan dimensiones 
+tan inmensas como unsigned long long, se ha tenido que 
+realizar el calculo empleado metodos de aritmetica.
+
+La forma en que se han logrado dividir dos numeros del tipo ull (Unsigned 
+long long) Ha sido de la siguiente manera:
+
+\begin{lstlisting}
+r = 1; //contador
+a = r_sum[1] - r_sum[0];
+b = r_idle[1] - r_idle[0];
+c = 0; //c representa la cantidad de 0s necesarios que le lleva a a b.
+while(a < b){
+//Debemos aplicar metodos aritmeticos para calcular
+//El cociente de a/b. Ya que b es siempre >> a y por tanto se 
+//trunca a 0 por default.
+    a = b * 10;
+    c++;
+}
+
+a = a * 1000; //We add extra precision
+
+result = a/b; //En este punto a >> b, probocando una division entera
+//truncada, sin embargo la parte entera en este punto es realmente
+//la parte decimal de b/a. c se utiliza para agregar los 0s 
+//que le lleva b a a.
+
+  seq_putc(p,'0');
+  seq_putc(p,'.');
+    while(r < c){
+        seq_putc(p,'0');
+       r++;
+    }
+
+\end{lstlisting} 
+
+\subsubsection{Monitor-RAM}
+El monitoreo de la memoria RAM es un poco mas sencilla. Pues 
+el Kernel de Linux trae varias librerias disenadas especificamente
+para dicha tarea. Si bien el calculo de la memoria RAM utilizada
+por el sistema no es trivial si se hace a mano, el Kernel 
+implementa un Struct denominado sysinfo. Este struct y sus 
+respectivos headers proveen una funcion de utilidad denominada
+si\_mem\_available(). La cual calcula un estimado de la cantidad de
+memoria RAM disponible para alojar nuevos procesos sin permitir
+que el sistema entre a Swap. Este calculo se realiza en base
+a varias metricas como el tamanio del stack, heap, segmento de codigo
+cargados en memoria, paginas de espacio de datos compartidas, cache,
+buffers y varias otras metricas propias del kernel. 
+El modulo implementado por mi simplemente utiliza este valor para
+calcular el porcentaje de memoria utilizado en un instante t, de 
+la forma:
+$RAM = (totalMem - availableMem)/totalMem$
+Debido a que estos tambien son numeros muy grandes (unsigned long)
+La division de punto flotante tambien se implemento a mano 
+siguiendo el algoritmo utilizado por el modulo del CPU.
+\section{Servidor Web}
+Finalmente se implemento un servidor web implementado con el 
+framework React que permite al usuario monitorear los servidores
+A y B en tiempo real desde el navegador.
+Es importante notar que el monitor web NO implementa el uso de sockets
+u otro tipo de tecnologias bi-direccionales para monitoreo de 
+aplicaciones. Sino utiliza un modelo polling mucho mas basico y simple
+que se basa en realizar peticiones a cada servidor durante un intervalo
+de tiempo corto y constante.
+Las publicaciones se consultan a un intervalo base de 3 segundos.
+Las metricas de monitoreo del servidor como el uso de RAM, CPU y la
+cantidad de elementos almacenados se realiza cada 5 segundos.
+La aplicacion en si es muy sencilla, pues consta unicamente de 2 partes:
+\begin{itemize}
+  \item Vista de publicaciones de cada servidor
+  \item Monitoreo de ambos servidores
+\end{itemize}
+Finalmente, es importante aclarar que el servidor web 
+despliega el cliente web en 2 puertos: El puerto 80 con la ayuda
+de Apache server, y el puerto 8080 con la ayuda de un 
+contenedor de Docker corriendo sobre una maquina Alpine linux 
+sirviendo la aplicacion con Node's http-server. La aplicacion web
+servida en ambos puertos es exactamente la misma y es una pagina 
+web estatica, esta se obtiene del proceso de compilacion 
+de la aplicacion escrita en React hacia html,css y JS puros que 
+pueden ser servidos por cualquier servidor web (en este caso se
+emplearon tanto Apache como http-server en Docker).
+
+\section{Apagado de instancias y manejo de direcciones IP}
+Para evitar cargos extra, todas las instancias EC2 que alojan 
+estos servidores (5 servidores) han sido apagados. Esto sin embargo, 
+implica que la siguiente vez que se enciendan, tendran una 
+direccion IP distinta y un nombre de DNS distinto. Estas 
+direcciones sin embargo estan quemadas en el codigo fuente de las 
+aplicaciones desplegadas en los servidores. 
+
+Para solucionar este problema, se emplea el uso de bash 
+scripts que actualizan el codigo de los servidores de manera
+automatica con las nuevas
+direcciones. Dichas direcciones se obtienen directamente 
+de AWS utilizando la AWS CLI. 
+Una vez estos se encuentren actualizados, se envian 
+a los servidores por medio del protocolo SCP. Posteriormente 
+se utiliza ssh para enviar el comando de actualizacion a cad instancia.
+Esto elimina la necesidad de conectarse a cada instancia interactivamente
+a mano y realizar las actualizaciones. Las unicas instancias a las 
+que se necesita conectarse interactivamente son los servidores A \& B, 
+ya que la carga de los modulos del kernel debe hacerse con el usuario 
+root y por motivos de seguridad no se puede conectar a ninguna instancia 
+EC2 directamente como root. Sin embargo, el deployment de estos 
+modulos puede hacerse facilmente con 2 comandos: sudo su y mount.sh\\
+A continuacion se muestra el script de deployment empleado 
+para automatizar el despliegue del codigo fuente a los servidores.
+
+\begin{lstlisting}[bash]
+#!/bin/sh
+
+cd ~/aws/sopes
+echo "Actualizando ambos servidores 1."
+
+rawA="http://$(./get-address servidorA):5000"
+rawB="http://$(./get-address servidorB):5000"
+
+A="'$rawA'"
+B="'$rawB'"
+
+
+# Servidor1(s). Debemos cambiar las direcciones de A & B
+
+S1="$(cat ~/python/balancer/app.py)"
+
+echo "$S1" | awk '
+{ if(NR == 5) print "S_A = '"$A"'";
+else if (NR == 6) print "S_B = '"$B"'"; 
+else print $0 }' > ~/python/balancer/app.py 
+
+./send-file servidor1-1 /home/renato/python/balancer
+./send-file extra /home/renato/python/balancer true
+
+./command servidor1-1 'cd balancer; sh update'
+./command extra 'cd balancer; sh update'
+
+echo "Actualizando el servidor WEB":
+
+BUFFER="$(cat ~/python/web/src/demo.js)"
+A="const pollURL = '$rawA/statements';"
+B="const pollURL = '$rawB/statements';"
+
+echo "$BUFFER" | awk '
+{ if(NR == 9) print "'"$A"'"; else print $0 }' > ~/python/web/src/demo.js 
+
+BUFFER="$(cat ~/python/web/src/demoB.js)"
+echo "$BUFFER" | awk '
+{ if(NR == 9) print "'"$B"'"; else print $0 }' > ~/python/web/src/demoB.js 
+
+A="const pollA = '$rawA/inspect';"
+B="const pollB = '$rawB/inspect';"
+
+BUFFER="$(cat ~/python/web/src/monitor.js)"
+echo "$BUFFER" | awk '
+{ if(NR == 6) print "'"$A"'"; else if(NR == 7) print "'"$B"'"; else print $0 }' > ~/python/web/src/monitor.js 
+
+cd ~/python/web
+npm run build
+cd ~/aws/sopes
+
+./send-file web /home/renato/python/web/build
+./send-file web /home/renato/python/web/update
+./send-file web /home/renato/python/web/update-apache
+./send-file web /home/renato/python/web/Dockerfile
+
+./command web 'sh update'
+./command web 'sh update-apache'
+
+echo "Actualizando los servidores A & B."
+
+./send-file servidorA /home/renato/python/monitor/cpu
+./send-file servidorA /home/renato/python/monitor/ram
+
+./send-file servidorB /home/renato/python/monitor/cpu
+./send-file servidorB /home/renato/python/monitor/ram
+
+./send-file servidorA /home/renato/python/compose
+./send-file servidorB /home/renato/python/compose
+
+./command servidorA 'cd compose && sh update'
+./command servidorB 'cd compose && sh update'
+
+echo "La Stack entera ha sido actualizada.
+Conectando a los servidores A & B manualmente,
+ya que los modulos del kernel deben ser re-subidos unicamente 
+por el usuario root"
+
+./connect servidorA
+./connect servidorB
+
+echo "Deployment successful"
+\end{lstlisting} 
+\end{document}

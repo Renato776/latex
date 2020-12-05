@@ -1,0 +1,62 @@
+\babel@toc {spanish}{}
+\contentsline {section}{\numberline {1}Introducción}{3}%
+\contentsline {section}{\numberline {2}Objetivos}{4}%
+\contentsline {subsection}{\numberline {2.1}Específicos}{4}%
+\contentsline {section}{\numberline {3}Marco Teórico}{5}%
+\contentsline {subsection}{\numberline {3.1}Definiciones}{5}%
+\contentsline {subsubsection}{Cola}{5}%
+\contentsline {subsubsection}{Cliente}{5}%
+\contentsline {subsubsection}{Sistema de Colas}{5}%
+\contentsline {subsubsection}{Mecanismo de Servicio}{5}%
+\contentsline {subsubsection}{Disciplina de la cola}{5}%
+\contentsline {subsubsection}{Tasa media de llegadas}{5}%
+\contentsline {subsubsection}{Tasa media de servicio}{5}%
+\contentsline {subsubsection}{Número de clientes en el sistema de colas en un determinado momento}{5}%
+\contentsline {subsubsection}{Factor de Utilización}{5}%
+\contentsline {subsubsection}{Número esperado de Clientes en el sistema}{6}%
+\contentsline {subsubsection}{Longitud esperada de la cola}{6}%
+\contentsline {subsubsection}{Tiempo de espera en el sistema}{6}%
+\contentsline {subsubsection}{Tiempo de espera en la cola}{6}%
+\contentsline {subsubsection}{Relaciones entre $L, W, L_{q}, W_{q}$ }{6}%
+\contentsline {subsection}{\numberline {3.2}Notación de Kendall}{7}%
+\contentsline {subsubsection}{Ejemplos}{8}%
+\contentsline {subsection}{\numberline {3.3}Modelos}{8}%
+\contentsline {subsubsection}{M/M/s}{8}%
+\contentsline {subsection}{\numberline {3.4}M/D/s}{9}%
+\contentsline {subsection}{\numberline {3.5}$M/E_{k}/1$}{9}%
+\contentsline {subsection}{\numberline {3.6}Redes de Colas}{9}%
+\contentsline {subsubsection}{Propiedad de Equivalencia}{10}%
+\contentsline {section}{\numberline {4}Marco Práctico}{10}%
+\contentsline {subsection}{\numberline {4.1}Enunciado del caso de estudio}{10}%
+\contentsline {subsection}{\numberline {4.2}Análisis del estado actual}{11}%
+\contentsline {subsubsection}{Modelo}{11}%
+\contentsline {subsubsection}{Costo Total}{11}%
+\contentsline {subsection}{\numberline {4.3}Inventario en proceso}{11}%
+\contentsline {subsubsection}{Fase 1}{11}%
+\contentsline {subsubsection}{Fase 2}{12}%
+\contentsline {subsubsection}{Total}{12}%
+\contentsline {subsection}{\numberline {4.4}Propuesta 1}{12}%
+\contentsline {subsubsection}{Modelo}{12}%
+\contentsline {subsubsection}{Fase 1}{12}%
+\contentsline {subsubsection}{Fase 2}{13}%
+\contentsline {subsubsection}{Total}{13}%
+\contentsline {subsection}{\numberline {4.5}Propuesta 2}{13}%
+\contentsline {subsubsection}{Modelo}{13}%
+\contentsline {subsubsection}{Fase 1}{14}%
+\contentsline {subsubsection}{Fase 2}{14}%
+\contentsline {subsubsection}{Total}{14}%
+\contentsline {subsection}{\numberline {4.6}Propuesta 3}{16}%
+\contentsline {subsubsection}{Modelo}{16}%
+\contentsline {subsubsection}{Fase 1}{16}%
+\contentsline {subsubsection}{Fase 2}{16}%
+\contentsline {subsubsection}{Total}{16}%
+\contentsline {subsection}{\numberline {4.7}Propuesta 4}{17}%
+\contentsline {subsubsection}{Modelo}{17}%
+\contentsline {subsubsection}{Fase 1}{17}%
+\contentsline {subsubsection}{Fase 2}{17}%
+\contentsline {subsubsection}{Total}{18}%
+\contentsline {section}{\numberline {5}Resultados}{19}%
+\contentsline {section}{\numberline {6}Conclusiones}{20}%
+\contentsline {section}{\numberline {7}Recomendaciones}{20}%
+\contentsline {section}{\numberline {8}Anexos}{21}%
+\contentsline {section}{Referencias}{25}%

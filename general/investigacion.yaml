@@ -1,0 +1,22 @@
+Equations:
+  eq1:lsDef: Ecuacion de la definicion mas pura de Ls.
+  eq2:lqDef: Ecuacion de la definicion mas pura de Lq.
+  eq3:lw: Ecuacion de relacion fundamental entre L y W.
+  eq4:lwq: Ecuacion de relacion fundamental entre Lq y Wq.
+  eq5:wwq: Ecuacion de relacion fundamental entre W y Wq.
+  eq6:llq: Ecuacion de relacion fundamental entre Lq y L.
+  eq7:p0: Ecuacion para encontrar P0 en un modelo M/M/s.
+  eq8:pn: Ecuacion para encontrar Pn en un modelo M/M/s.
+  eq9:rho: Ecuacion para encontrar Rho.
+  eq10:lqmds: Ecuacion para encontrar Lq en un modelo M/D/s.
+  eq1l:lmds: Ecuacion para encontrar L en un modelo M/D/s.
+  eq12:llq: Ecuacion para encontrar Lq en un modelo M/Ek/1.
+  eq13:lqmms: Ecuacion para encontrar Lq en un modelo M/M/S.
+  eq14:media: Ecuacion para encontrar la media en una distribucion de Erlang.
+  eq15:desviacion: Ecuacion para encontrar la desviacion estandar4 en una distribucion de Erlang.
+
+
+TODO:
+  - Implement Erlang for the theory
+  - Implement Queue Network for the theory
+

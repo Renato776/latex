@@ -1,0 +1,72 @@
+%\documentclass{article} %Use titlepage option to set title in a page of its own
+\documentclass[a4paper,12pt]{article}
+\usepackage[left=0.5cm,right=0.5cm,top=2cm,bottom=3cm]{geometry} %Use geometry package to set custom margin sizes
+\usepackage{graphicx} %Needed to insert images!
+%\usepackage[section]{placeins} %Needed to ensure images don't fall out of their sections.
+\usepackage[spanish]{babel}	%Use babel package to set \setcounter{secnumdepth}{0}	%Change the number if you need numbering on the sections.
+
+\usepackage{fancyhdr} %Use for footers, can also be used for headers.
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE,RO]{201709244}
+\fancyhead[RE,LO]{Renato Josue Flores Perez}
+\fancyfoot[LE,RO]{Arquitectura de Computadores y Ensambladores 2, Ing. Gabriel Diaz}
+
+\renewcommand{\headrulewidth}{2pt}
+\renewcommand{\footrulewidth}{1pt}
+
+\usepackage{titlesec}	%Use titlesec package to customize the formatting of titles
+\titleformat{\section}[block]
+  {\Large\bfseries\filcenter}	%Use Huge for even bigger headers
+  {} %Add thesection within the braces if you want to display header number.
+  {1em}
+  {}
+
+%------------------------------ Constants ---------------------------------
+\newcommand{\titulo}{Aplicacion de reportes en Processing}
+%----------------------- Custom commands ------------------------------
+\newcommand*\rbreak{\par\noindent\linebreak}
+%% ----- Code highliting style specification -----------------
+\graphicspath{{/home/renato/screenshots/arqui/}}
+
+\begin{document}
+\section{\titulo}
+\begin{center}
+\textbf{\today}
+\end{center}
+La interfaz de usuario de la aplicación esta diseñada con simplicidad 
+y amigabilidad en mente. Esta diseñada para ser sumamente intuitiva
+y fácilmente navegable. 
+Esta presenta 1 Select Box, el cual el usuario puede utilizar para 
+seleccionar el reporte que desea visualizar. Tras seleccionar un 
+reporte, aparecerá otro Select Box sobre el cual el usuario 
+podrá seleccionar la fecha o mes de interés según aplique al reporte.
+La implementacion de Select Boxes sobre Text Boxes ayuda al usuario a
+ubicar fácilmente lo que necesita y previene errores.
+A continuación se muestra un ejemplo de cada uno de los 
+reportes disponibles.
+\begin{figure}[h]
+	\includegraphics[width=\textwidth,keepaspectratio]{rep1.png}
+		 \caption{Reporte de pesos de paquetes entregados por día}
+\end{figure}
+\pagebreak
+\begin{figure}[h]
+	\includegraphics[width=\textwidth,keepaspectratio]{rep2.png}
+		 \caption{Reporte de paquetes entregados por dia en un mes}
+\end{figure}
+\pagebreak
+\begin{figure}[h]
+	\includegraphics[width=\textwidth,keepaspectratio]{rep3.png}
+		 \caption{Reporte de obstaculos encontrados por entregas en un dia}
+\end{figure}
+\pagebreak
+\begin{figure}[h]
+	\includegraphics[width=\textwidth,keepaspectratio]{rep4.png}
+		 \caption{Reporte de tiempos de ida y vuelta por entregas en un dia}
+\end{figure}
+\pagebreak
+\begin{figure}[h]
+	\includegraphics[width=\textwidth,keepaspectratio]{rep5.png}
+		 \caption{Reporte de tiempos promedio de ida y vuelta por dia en un mes}
+\end{figure}
+\end{document}

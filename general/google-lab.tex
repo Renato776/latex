@@ -1,0 +1,37 @@
+\documentclass{article}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry} 
+\usepackage{graphicx} 
+%\usepackage[section]{placeins} 
+\usepackage[spanish]{babel}
+
+%------------------------------ Constants ---------------------------------
+\newcommand{\nombre}{Renato Flores}
+\newcommand{\carnet}{201709244}
+\newcommand{\universidad}{USAC}
+\newcommand{\catedratico}{Ing. Allan Morataya}
+\newcommand{\curso}{Sistemas Operativos 1}
+\newcommand{\titulo}{Práctica de Balanceo de Carga en Google Cloud}
+%----------------------- Custom commands ------------------------------
+\author{\nombre , \carnet}
+\title{\textbf{\Huge\titulo}}
+
+\graphicspath{{/home/renato/screenshots/sopes-1/}}
+\begin{document}
+\maketitle
+
+\begin{figure}[h]
+        \includegraphics[width=\textwidth,keepaspectratio]{google-1.png}
+                 \caption{Balanceador funcionando}
+\end{figure}	
+\pagebreak
+\begin{figure}[h]
+        \includegraphics[width=\textwidth,keepaspectratio]{google-2.png}
+                 \caption{Configuración del balanceador}
+\end{figure}
+\pagebreak
+
+\begin{figure}[h]
+        \includegraphics[width=\textwidth,keepaspectratio]{google-3.png}
+                 \caption{Configuración de las instancias}
+\end{figure}
+\end{document}

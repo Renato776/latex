@@ -1,0 +1,61 @@
+\BOOKMARK [1][-]{section.1}{Introducci\363n}{}% 1
+\BOOKMARK [1][-]{section.2}{Objetivos}{}% 2
+\BOOKMARK [2][-]{subsection.2.1}{Espec\355ficos}{section.2}% 3
+\BOOKMARK [1][-]{section.3}{Marco Te\363rico}{}% 4
+\BOOKMARK [2][-]{subsection.3.1}{Definiciones}{section.3}% 5
+\BOOKMARK [3][-]{section*.3}{Cola}{subsection.3.1}% 6
+\BOOKMARK [3][-]{section*.4}{Cliente}{subsection.3.1}% 7
+\BOOKMARK [3][-]{section*.5}{Sistema de Colas}{subsection.3.1}% 8
+\BOOKMARK [3][-]{section*.6}{Mecanismo de Servicio}{subsection.3.1}% 9
+\BOOKMARK [3][-]{section*.7}{Disciplina de la cola}{subsection.3.1}% 10
+\BOOKMARK [3][-]{section*.8}{Tasa media de llegadas}{subsection.3.1}% 11
+\BOOKMARK [3][-]{section*.9}{Tasa media de servicio}{subsection.3.1}% 12
+\BOOKMARK [3][-]{section*.10}{N\372mero de clientes en el sistema de colas en un determinado momento}{subsection.3.1}% 13
+\BOOKMARK [3][-]{section*.11}{Factor de Utilizaci\363n}{subsection.3.1}% 14
+\BOOKMARK [3][-]{section*.12}{N\372mero esperado de Clientes en el sistema}{subsection.3.1}% 15
+\BOOKMARK [3][-]{section*.13}{Longitud esperada de la cola}{subsection.3.1}% 16
+\BOOKMARK [3][-]{section*.14}{Tiempo de espera en el sistema}{subsection.3.1}% 17
+\BOOKMARK [3][-]{section*.15}{Tiempo de espera en la cola}{subsection.3.1}% 18
+\BOOKMARK [3][-]{section*.16}{Relaciones entre L, W, Lq, Wq }{subsection.3.1}% 19
+\BOOKMARK [2][-]{subsection.3.2}{Notaci\363n de Kendall}{section.3}% 20
+\BOOKMARK [3][-]{section*.17}{Ejemplos}{subsection.3.2}% 21
+\BOOKMARK [2][-]{subsection.3.3}{Modelos}{section.3}% 22
+\BOOKMARK [3][-]{section*.18}{M/M/s}{subsection.3.3}% 23
+\BOOKMARK [2][-]{subsection.3.4}{M/D/s}{section.3}% 24
+\BOOKMARK [2][-]{subsection.3.5}{M/Ek/1}{section.3}% 25
+\BOOKMARK [2][-]{subsection.3.6}{Redes de Colas}{section.3}% 26
+\BOOKMARK [3][-]{section*.19}{Propiedad de Equivalencia}{subsection.3.6}% 27
+\BOOKMARK [1][-]{section.4}{Marco Pr\341ctico}{}% 28
+\BOOKMARK [2][-]{subsection.4.1}{Enunciado del caso de estudio}{section.4}% 29
+\BOOKMARK [2][-]{subsection.4.2}{An\341lisis del estado actual}{section.4}% 30
+\BOOKMARK [3][-]{section*.20}{Modelo}{subsection.4.2}% 31
+\BOOKMARK [3][-]{section*.21}{Costo Total}{subsection.4.2}% 32
+\BOOKMARK [2][-]{subsection.4.3}{Inventario en proceso}{section.4}% 33
+\BOOKMARK [3][-]{section*.22}{Fase 1}{subsection.4.3}% 34
+\BOOKMARK [3][-]{section*.23}{Fase 2}{subsection.4.3}% 35
+\BOOKMARK [3][-]{section*.24}{Total}{subsection.4.3}% 36
+\BOOKMARK [2][-]{subsection.4.4}{Propuesta 1}{section.4}% 37
+\BOOKMARK [3][-]{section*.25}{Modelo}{subsection.4.4}% 38
+\BOOKMARK [3][-]{section*.26}{Fase 1}{subsection.4.4}% 39
+\BOOKMARK [3][-]{section*.27}{Fase 2}{subsection.4.4}% 40
+\BOOKMARK [3][-]{section*.28}{Total}{subsection.4.4}% 41
+\BOOKMARK [2][-]{subsection.4.5}{Propuesta 2}{section.4}% 42
+\BOOKMARK [3][-]{section*.29}{Modelo}{subsection.4.5}% 43
+\BOOKMARK [3][-]{section*.30}{Fase 1}{subsection.4.5}% 44
+\BOOKMARK [3][-]{section*.31}{Fase 2}{subsection.4.5}% 45
+\BOOKMARK [3][-]{section*.32}{Total}{subsection.4.5}% 46
+\BOOKMARK [2][-]{subsection.4.6}{Propuesta 3}{section.4}% 47
+\BOOKMARK [3][-]{section*.33}{Modelo}{subsection.4.6}% 48
+\BOOKMARK [3][-]{section*.34}{Fase 1}{subsection.4.6}% 49
+\BOOKMARK [3][-]{section*.35}{Fase 2}{subsection.4.6}% 50
+\BOOKMARK [3][-]{section*.36}{Total}{subsection.4.6}% 51
+\BOOKMARK [2][-]{subsection.4.7}{Propuesta 4}{section.4}% 52
+\BOOKMARK [3][-]{section*.37}{Modelo}{subsection.4.7}% 53
+\BOOKMARK [3][-]{section*.38}{Fase 1}{subsection.4.7}% 54
+\BOOKMARK [3][-]{section*.39}{Fase 2}{subsection.4.7}% 55
+\BOOKMARK [3][-]{section*.40}{Total}{subsection.4.7}% 56
+\BOOKMARK [1][-]{section.5}{Resultados}{}% 57
+\BOOKMARK [1][-]{section.6}{Conclusiones}{}% 58
+\BOOKMARK [1][-]{section.7}{Recomendaciones}{}% 59
+\BOOKMARK [1][-]{section.8}{Anexos}{}% 60
+\BOOKMARK [1][-]{section*.41}{Referencias}{}% 61

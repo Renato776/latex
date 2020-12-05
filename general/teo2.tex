@@ -1,0 +1,123 @@
+\documentclass{article}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry} 
+\usepackage{graphicx} 
+%\usepackage[section]{placeins} 
+\usepackage[spanish]{babel}
+
+%------------------------------ Constants ---------------------------------
+\newcommand{\nombre}{Renato Flores}
+\newcommand{\carnet}{201709244}
+\newcommand{\universidad}{USAC}
+\newcommand{\catedratico}{Ing. Jorge Luis Álvarez}
+\newcommand{\curso}{Teoría de Sistemas 2}
+\newcommand{\titulo}{Método del Valor Ganado}
+%----------------------- Custom commands ------------------------------
+\author{\nombre , \carnet}
+\title{\textbf{\Huge\titulo}}
+\newcommand*\rbreak{\par\noindent\linebreak}
+\graphicspath{{/home/renato/screenshots/teo2/}}
+\begin{document}
+\maketitle
+La Gestión del Valor Ganado (GVG) también abreviado EVM por sus siglas en inglés es una técnica 
+que proporciona un enfoque para medir el desempeño del proyecto a partir de la comparación de su avance 
+real frente al planeado, permitiendo evaluar tendencias para formular pronósticos.\rbreak
+Para implementar la GVG en un proyecto es necesario definir la Línea Base de Medición del Desempeño 
+)Performance Measurement Baseline, PMB) que integra el alcance (EDT), el cronograma (Gantt) y el cálculo de sus costos 
+y recursos requeridos para su ejecución (Presupuesto).
+\section{Valores escenciales}
+\subsection{Valor Planificado}
+También abreviado PV (Planned Value) Es el valor de la PMB al día de la fecha.
+\subsection{Valor Ganado}
+Earned Value (EV) representa lo que ya se ha realizado al dia de la fecha, valuado 
+con los costos usados para definir la PMB.
+\subsection{Costo Real}
+Actual Cost (AC) representa el costo que ha insumido el trabajo realizado hasta la fecha.
+Se pueden expresar en porcentajes dividiéndolos por el Presupuesto hasta la Conclusión (Budget at Completition, BAC) \rbreak
+\bfseries{Ejemplo}\rbreak
+\begin{itemize}
+                \item PV\% = PV/BAC
+                \item EV\% = EV/BAC
+                \item AC\% = AC/BAC    
+\end{itemize}
+                \section{Variaciones}
+                \subsection{Variación del Cronograma}
+                (Schedule Variance, SV). SV = EV – PV
+                \subsection{Variación del Costo}
+                (Cost Variance, CV). CV = EV – AC\rbreak
+                \bfseries{SV\%} = SV / PV \rbreak
+                \bfseries{CV\%} = CV / EV
+                \section{Índices de Rendimiento}
+    \subsection{Índice de Rendimiento del Cronograma} (Schedule Performance Index, SPI). SPI = EV / PV
+    \subsection{Índice de Rendimiento del Costo} (Cost Performance Index, CPI). CPI = EV /AC
+    \subsection{Índice del Rendimiento hasta Concluir} (To Complete Performance Index, TCPI). TCPI = (BAC – EV) / (BAC – AC).
+\section{Valores de Proyección a la finalización del Proyecto}
+    \subsection{Estimado a la Conclusión} (Estimate at Completion, EAC). Es el pronóstico del costo final. Puede calcularse de diferentes formas:
+    \begin{itemize}
+        \item EAC = BAC – SV. Los costos futuros no serán los mismos que los considerados en la PMB debido a que las variaciones del costo fueron atípicas.
+        \item EAC = BAC / CPI. Los costos futuros se calcularán de acuerdo con el índice de eficiencia del rendimiento del costo a la fecha.
+        \item EAC = BAC / (CPI * SPI). Los costos futuros se calcularán con base a los índices de rendimiento del costo y del cronograma a la fecha.
+        \item EAC = AC + Nuevo estimado para el trabajo remanente.
+    \end{itemize}
+    \subsection{Estimado hasta concluir} (Estimate to Complete, ETC). ETC = EAC – AC
+    \subsection{Variación a la Conclusión} (Variance at Completion, VAC). VAC = BAC – EAC \rbreak
+    \bfseries{VAC\%} = VAC / BAC
+    \subsection{Índice de Rendimiento del Costo a la Conclusión} (Cost Performance Index at Conclusion, CPIAC). CPIAC = BAC / EAC
+    \section{Utilidad}
+    A lo largo de la ejecución y supervisión del proyecto, es necesario analizar el rendimiento del proyecto para poder contestar
+    a la pregunta que siempre nos hacen todos los involucrados: ¿cómo va el proyecto? De la misma manera, 
+    se debe revisar las tendencias, decidir qué medidas correctivas se aplicarán y determinar los pronósticos 
+    para responder la pregunta más importante: ¿cómo terminará el proyecto? \rbreak
+    En cada fecha de estado debe registrarse el avance de cada tarea del proyecto de acuerdo con la
+    técnica de medición del valor ganado seleccionada durante la planificación; debe, además, actualizarse el trabajo 
+    remanente de la tarea. De esta manera siempre se contará con información actualizada y confiable sobre el proyecto.\rbreak
+    Finalmente, es importante aclarar que el principal objetivo de la GVG es proporcionar la retroalimentación correcta 
+    para facilitar la toma de decisiones. La GVG por sí misma no producirá proyectos exitosos; para ello se requiere de
+    un director de proyecto dispuesto a realizar el análisis necesario y a emprender acciones correctivas cuando se lo requiera.
+        \section{Pasos para la implementación general de la GVG}
+        A continuación se listan los pasos a seguir de manera general para implementar la GVG de manera exitosa. Sin embargo, 
+        estos pueden variar de acuerdo al proyecto en cuestión.
+        \subsection{Inicio}
+        \begin{itemize}
+    \item Definir los parámetros iniciales y las diferentes opciones de software a utilizar
+    \item Definir los umbrales de calidad que se usarán para el monitoreo y el control del proyecto
+        \end{itemize}
+        \subsection{Planificación}
+        \begin{itemize}
+    \item Definir la EDT
+    \item Definir la técnica de medición del valor ganado para cada tarea
+    \item Definir el cronograma dinámico
+    \item Asignar los recursos/costos a todas las tareas
+    \item Establecer la distribución del presupuesto a lo largo del tiempo
+    \item Establecer la línea base de medición del rendimiento
+        \end{itemize}
+    En cada uno de los pasos anteriores se deberá revisar el paso anterior y realizar actualizaciones cuando sea necesario
+\subsection{Ejecución, seguimiento y control (para cada período de informes)}
+    \begin{itemize}
+            \item Definir la fecha de estado
+            \item Registrar el avance de cada tarea de acuerdo con la técnica de medición del valor ganado elegida
+            \item Actualizar el trabajo remanente de cada tarea
+            \item Desarrollar el análisis de datos de la GVG
+            \item Calcular o definir pronósticos
+            \item Proponer acciones correctivas según sea necesario
+            \item Entregar informes de desempeño
+            \item Mantener la integridad de la línea base de medición del rendimiento
+    \end{itemize}
+    \clearpage
+\center    \section{Apéndices}
+        \begin{figure}[h]
+                \begin{center}
+                        \includegraphics[width=250,keepaspectratio]{gvg-1.jpg}
+                \end{center}
+                \caption{Partes de la GVG}
+        \end{figure}
+        \begin{figure}[h]
+                \begin{center}
+                        \includegraphics[width=250,keepaspectratio]{gvg-2.jpg}
+                \end{center}
+                \caption{Ejemplo de la medición del valor ganado con 2 períodos de medición}
+        \end{figure}
+%\begin{figure}[h]
+%        \includegraphics[width=\textwidth,keepaspectratio]{/home/renato/screenshots/sopes-1/security-group.png}
+%                 \caption{Crear grupo de seguridad de red}
+%\end{figure}	
+\end{document}

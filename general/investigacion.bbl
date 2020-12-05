@@ -1,0 +1,99 @@
+\begin{thebibliography}{}
+
+\bibitem [\protect \citeauthoryear {%
+Hillier%
+\ \BBA {} Lieberman%
+}{%
+Hillier%
+\ \BBA {} Lieberman%
+}{%
+{\protect \APACyear {2010}}%
+}]{%
+libroIO2}
+\APACinsertmetastar {%
+libroIO2}%
+\begin{APACrefauthors}%
+Hillier, F\BPBI S.%
+\BCBT {}\ \BBA {} Lieberman, G\BPBI J.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2010}{}{}.
+\newblock
+\APACrefbtitle {Introducción a la Investigación de Operaciones}
+  {Introducción a la investigación de operaciones}\ (\PrintOrdinal{9}\ \BEd).
+\newblock
+\APACaddressPublisher{}{Mc Graw Hill}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Taha%
+}{%
+Taha%
+}{%
+{\protect \APACyear {2012}}%
+}]{%
+libroION2}
+\APACinsertmetastar {%
+libroION2}%
+\begin{APACrefauthors}%
+Taha, H\BPBI A.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2012}{}{}.
+\newblock
+\APACrefbtitle {Investigación de Operaciones} {Investigación de operaciones}\
+  (\PrintOrdinal{9}\ \BEd).
+\newblock
+\APACaddressPublisher{}{Pearson}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Tijms%
+}{%
+Tijms%
+}{%
+{\protect \APACyear {2003}}%
+}]{%
+libroION4}
+\APACinsertmetastar {%
+libroION4}%
+\begin{APACrefauthors}%
+Tijms, H\BPBI C.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2003}{}{}.
+\newblock
+\APACrefbtitle {A First Course in Stochastic Models.} {A first course in
+  stochastic models.}
+\newblock
+\APACaddressPublisher{}{Wiley}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Winston%
+}{%
+Winston%
+}{%
+{\protect \APACyear {2005}}%
+}]{%
+libroION3}
+\APACinsertmetastar {%
+libroION3}%
+\begin{APACrefauthors}%
+Winston, W\BPBI L.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2005}{}{}.
+\newblock
+\APACrefbtitle {Investigación de Operaciones, Aplicaciones y Algoritmos}
+  {Investigación de operaciones, aplicaciones y algoritmos}\
+  (\PrintOrdinal{4}\ \BEd).
+\newblock
+\APACaddressPublisher{}{Thomson}.
+\PrintBackRefs{\CurrentBib}
+
+\end{thebibliography}

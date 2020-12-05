@@ -1,0 +1,85 @@
+\documentclass{article} 
+\usepackage[left=1cm,right=1cm,top=1cm,bottom=1cm]{geometry} 
+\usepackage[spanish]{babel}
+\usepackage{listings}     
+\usepackage{xcolor} 
+\setcounter{secnumdepth}{0}
+\usepackage{titlesec}
+\titleformat{\section}[block]
+  {\Large\bfseries\filcenter}	
+  {} 
+  {1em}
+  {}
+
+%------------------------------ Constants ---------------------------------
+\newcommand{\nombre}{Renato Flores}
+\newcommand{\carnet}{201709244}
+\newcommand{\curso}{Sistemas Operativos 1}
+\newcommand{\titulo}{Implementacion de Semaforos en C}
+%----------------------- Custom commands ------------------------------
+\newcommand*\rbreak{\par\noindent\linebreak}
+%% ----- Code highliting style specification -----------------
+\lstdefinestyle{customc}{
+  belowcaptionskip=1\baselineskip,
+  breaklines=true,
+  %frame=L,
+ % xleftmargin=\parindent, 
+ % Use the commented options above if you'd like a left margin for the code block.
+ % useful to highlight the fact that is a code snippet.
+  language=C,
+  showstringspaces=false,
+  basicstyle=\footnotesize\ttfamily,
+  keywordstyle=\bfseries\color{green!40!black},
+  commentstyle=\itshape\color{purple!40!black},
+  identifierstyle=\color{blue},
+  stringstyle=\color{orange},
+}
+\lstset{style=customc} 
+%% ----------------------- Actual document ------------------------------
+
+\author{\nombre , \carnet}
+\title{\titulo}	
+
+\begin{document}
+\maketitle
+
+\section{semaforo.h}
+\begin{lstlisting}
+#ifndef HEADER_SEMAFORO
+#define HEADER_SEMAFORO
+
+#include "Process_list.h" //La implementacion de la cola de procesos
+//se define aparte.
+
+struct Semaforo {
+  int valor;
+  Process_list L;
+} S;
+
+void wait( struct Semaforo s);
+void signal( struct Semaforo s);
+void init_sem( struct Semaforo s);
+
+#endif
+\end{lstlisting} 
+\section{semaforo.c}
+\begin{lstlisting}
+#include "semaforo.h"
+
+void wait( struct Semaforo S){
+	S.valor = S.valor - 1;
+	if( S.valor < 0){
+          queue_process(S.L);
+	}
+}
+void signal( struct Semaforo S){
+	S.valor = S.valor + 1;
+	if(S.valor <= 0){
+          dequeue_process(S.L);
+	}
+}
+void sem_init( struct Semaforo S, int v){
+	S.valor = v;
+}
+\end{lstlisting} 
+\end{document}

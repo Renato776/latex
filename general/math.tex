@@ -1,0 +1,35 @@
+\documentclass[titlepage]{article} %Use titlepage option to set title in a page of its own
+\usepackage{blindtext}	%Use blind text to produce random text
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry} %Use geometry package to set custom margin sizes
+\usepackage{graphicx} %Needed to insert images!
+\usepackage[spanish]{babel}	%Use babel package to set language for the document.
+
+\setcounter{tocdepth}{3} 	%Set to 5 if you need even further numbering.
+% paragrahs and subparagraphs can be numbered too!
+\setcounter{secnumdepth}{3}	%Same as above, set to 5 if further numbering is needed.
+\usepackage{amsmath} 
+\usepackage{titlesec}	%Use titlesec package to customize the formatting of titles
+\titleformat{\section}[block]
+  {\Large\bfseries\filcenter}	%Use Huge for even bigger headers
+  {} %Add \thesection within the braces if you want to display header number.
+  {1em}
+  {}
+%----------------------------- Constants ------------------------
+\newcommand{\nombre}{Renato Flores}
+\newcommand{\carnet}{201709244}
+\newcommand{\universidad}{Universidad de San Carlos de Guatemala}
+\newcommand{\catedratico}{Ing. José Saquimux}
+\newcommand{\curso}{Matemática Aplicada 2}
+\newcommand{\titulo}{Proyecto \#1}
+% ---------------------- Custom comands -----------------------------
+\newcommand*\rbreak{\par\noindent\linebreak} %My own custom linebreaks!
+
+\begin{document}
+
+\input{/home/renato/latex/caratula/caratula.tex}
+\clearpage
+\section{Prueba de integracion entre Sympy \& Latex}
+Este es un texto explicativo, abajo puede encontrar una
+exprecion matematica que puede serle de interes. \\\\ 
+$ P = \left[\begin{matrix}0 & header & header_{1} & header_{2}\\header & 0.6 & 0.4 & 0\\header_{2} & 1 & 0 & 0\\header_{3} & 0.7 & 0 & 0.3\end{matrix}\right] $
+\end{document}
