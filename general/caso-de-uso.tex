@@ -1,0 +1,174 @@
+\documentclass{article}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry} 
+\usepackage{blindtext}
+\usepackage{graphicx} 
+\usepackage[section]{placeins} 
+\usepackage[spanish]{babel}
+\usepackage{listings} 
+\usepackage{xcolor} 
+\usepackage{pdfpages}
+\usepackage{array} 
+\usepackage{textcomp}
+\usepackage{titlesec}
+\setcounter{secnumdepth}{2}
+
+%--------------------- Custom commands ------------------------------
+\newcommand*\rbreak{\par\noindent\linebreak}
+\newcommand*\rawimage[2][13cm]{
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=#1,keepaspectratio]{#2}
+	\end{figure}
+}
+\newcommand*\casoheadera[2]{
+	\textbf{#1} & 
+	\parbox[t]{12cm}{#2} \\\hline
+}
+\newcommand*\casoheaderb[2]{
+	\multicolumn{2}{|l|}{
+		\parbox[t]{15cm}{ \textbf{#1} #2 \\ } 	
+	} \\\hline
+}
+%------------------------ Constants ---------------------------------
+\newcommand{\nombre}{Renato Josué Flores Pérez}
+\newcommand{\carnet}{201709244}
+\newcommand{\titulo}{Tienda Virtual de Vinos}
+\setcounter{secnumdepth}{0}
+%------------------------ Title formating --------------------------
+
+
+\author{\nombre , \carnet}
+\title{\textbf{\Huge\titulo}}
+
+\titleformat{\section}[block]{\Large\bfseries\filcenter}{}{1em}{}
+
+%------------------------- Document --------------------------------
+\begin{document}
+\maketitle
+\section{Diagramas de caso de uso de alto nivel}
+\rawimage{/tmp/CasosUso-TiendaVinos-1.png}
+\rawimage{/tmp/CasosUso-AltoNivel-2.png}
+\newpage
+\section{Diagramas de caso de uso expandidos}
+\rawimage{/tmp/caso-uso-extendido-1.png}
+\rawimage[10cm]{/tmp/caso-uso-extendido-2.png}
+\rawimage[10cm]{/tmp/vinos-casos-de-uso.png}
+
+%%%%
+\section{Especificaciones de casos de uso}
+\begin{tabular}{  | m{3cm} | m{12cm} | }
+	\hline
+	\casoheadera{Nombre}{Agregar productos}
+	\casoheadera{Autor}{\nombre}
+	\casoheadera{Fecha}{\today}
+	\casoheaderb{Descripción}{
+		Registro de un nuevo producto al sistema
+	}
+	\casoheaderb{Actores}{
+		Supervisor
+	}
+	\casoheaderb{Precondiciones}{
+		\begin{enumerate}
+			\item Estar registrado en el sistema como usuario supervisor
+			\item Estar previamente autenticado en una sesión activa
+		\end{enumerate}
+	}
+	\casoheaderb{Flujo Normal}{
+		\begin{enumerate}
+			\item Ingresar a la página de inicio del portal.
+			\item Selecciona la opción de agregar productos.
+			\item Llena el formulario con los detalles del producto
+			\item Selecciona la opción aceptar.
+		\end{enumerate}
+	}
+	\casoheaderb{Flujo Alternativo}{
+		\\
+		Al finalizar de llenar el formulario de registro
+		de producto el usuario opta por registrar 
+		una imágen para el producto.
+	}
+	\casoheaderb{Poscondiciones}{
+		\\
+		El usurario cliente pude observar el nuevo producto
+		en el catálogo de productos. El usuario supervisor
+		puede observar su nuevo producto registrado en 
+		su portal.
+	}
+\end{tabular} 
+\section{}
+\begin{tabular}{  | m{3cm} | m{12cm} | }
+	\hline
+	\casoheadera{Nombre}{Hacer login}
+	\casoheadera{Autor}{\nombre}
+	\casoheadera{Fecha}{\today}
+	\casoheaderb{Descripción}{
+		El usuario provee sus credenciales para poder
+		ingresar al sistema y comenzar una nueva sesión.
+	}
+	\casoheaderb{Actores}{
+		Usuario cliente, Usuario supervisor
+	}
+	\casoheaderb{Precondiciones}{
+		Estar registrado previamente en el sistema.
+	}
+	\casoheaderb{Flujo Normal}{
+		\begin{enumerate}
+			\item El usuario ingresa al portal
+			\item Provee sus credenciales
+			\item El sistema revisa que el usuario exista
+			\item El sistema verifica que las contraseñas sean las mismas
+			\item El sistema aloca recursos para manejar la nueva sesión
+			\item El usuario es redireccionado a su portal correspondiente
+		\end{enumerate}
+	}
+	\casoheaderb{Flujo Alternativo}{
+		\begin{itemize}
+			\item El nombre de usuario ingresado no existe.
+			\item Las contraseñas no coinciden.
+		\end{itemize}
+	}
+	\casoheaderb{Poscondiciones}{
+		El usuario es redireccionado a su portal y 
+		es capaz de realizar sus operaciones.
+	}
+\end{tabular} 
+
+\section{}
+\begin{tabular}{  | m{3cm} | m{12cm} | }
+	\hline
+	\casoheadera{Nombre}{Realizar compra}
+	\casoheadera{Autor}{\nombre}
+	\casoheadera{Fecha}{\today}
+	\casoheaderb{Descripción}{
+		Habilita al usuario realizar la compra de los productos
+		almacenados en su carrito.
+	}
+	\casoheaderb{Actores}{
+		Usuario cliente.
+	}
+	\casoheaderb{Precondiciones}{
+		\begin{enumerate}
+			\item Estar logeado en el sistema
+			\item Poseer uno o más productos en el carrito
+		\end{enumerate}
+	}
+	\casoheaderb{Flujo Normal}{
+		\begin{enumerate}
+			\item El cliente selecciona la opción de confirmar compra.
+			\item El cliente revisa su elección de productos.
+			\item El sistema genera un subtotal del precio de su orden.
+			\item El cliente confirma la orden
+		\end{enumerate}
+	}
+	\casoheaderb{Flujo Alternativo}{
+		\begin{enumerate}
+			\item El cliente cancela la orden.
+			\item El cliente edita su orden.
+			\item El cliente vacía su carrito.
+		\end{enumerate}
+	}
+	\casoheaderb{Poscondiciones}{
+		 El cliente es redireccionado al proceso de facturación
+	}
+\end{tabular} 
+\end{document}
