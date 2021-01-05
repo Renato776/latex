@@ -1,0 +1,41 @@
+DESAFIO:
+PREGUNTAS:
+  Netflix:
+    - Conforme a la situación descrita en el caso y bajo
+      la óptica de la ingeniería de Software, analice y
+      diseñe el conjunto de aplicaciones de Software
+      que Netflix cesita, incluyendo la base de 
+      suscriptores, la gestión de inventarios, el software
+      por recomendación y los pedidos de los
+      clientes, para la transición hacia el modelo actual de
+      distribución de contenidos, cuyo servicio principal
+      es la distribución de contenidos audiovisuales
+      a través de una plataforma en línea o 
+      servicio de video bajo de manda por streaming. Utilice
+      los diagramas UML que considere oportunos para
+      modelar su solución, de tal manera que quede 
+      suficientemente claro todo el proceso de desarrollo
+      del software.
+    - Tomando en cuenta la competencia y demanda de servicio,
+      qué metodología de desarrollo de software adoptaría
+      y por qué.
+    - ¿Qué momentos de crisis puede identificar y como los
+      prevendría?
+  Wayne Davidson:
+    Parte1:
+      - ¿Qué opinas sobre la decisión de Wayne?
+      - ¿Qué opinas sobre la decisión de Deborah?
+      - ¿Qué hubieras hecho tú en el caso de ser Wayne?
+      - ¿Y si hubieras estado en la situación de Deborah?
+    Parte2:
+      description: Imagina que si en vez de una empresa
+      de aeronáutica estuviéramos hablando de un 
+      hospital, en donde Wayne es un médico que ha de 
+      certificar
+      un tratamiento que sabe puede fallar y puede ocasionar
+      muertes entre los pacientes que lo utilicen.
+    PREGUNTAS:
+      - ¿Te importa tanto la situación económica del hospital
+        en este caso, como te preocupaba la de Occidental
+        Engineering?
+      - ¿Cuál es la diferencia?
