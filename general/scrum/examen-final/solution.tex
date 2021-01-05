@@ -4,6 +4,7 @@
 \usepackage[spanish]{babel}
 \usepackage{titlesec}
 \setcounter{secnumdepth}{3}
+\usepackage[section]{placeins}
 
 %--------------------- Custom commands ------------------------------
 \newcommand*\rbreak{\par\noindent\linebreak}
@@ -20,7 +21,7 @@
 \newcommand{\nombre}{Renato Josué Flores Pérez}
 \newcommand{\carnet}{201709244}
 \newcommand{\titulo}{Exámen Final}
-\graphicspath{{/home/renato/latex/general/scrum/master-develop/images/}}
+\graphicspath{{/home/renato/latex/general/scrum/examen-final/images/}}
 
 %------------------------ Title formating --------------------------
 
@@ -46,6 +47,133 @@ los diagramas UML que considere oportunos para
 modelar su solución, de tal manera que quede 
 suficientemente claro todo el proceso de desarrollo
 del software.
+\section{Diagramas de casos de uso}
+\begin{figure}[h]
+	\centering
+        \includegraphics[width=350px,keepaspectratio]{dcu-mas-alto-nivel.png}
+                 \caption{Diagrama de casos de uso de más alto nivel}
+\end{figure}	
+
+\begin{figure}[h]
+	\centering
+        \includegraphics[width=\textwidth,keepaspectratio]{dcu-alto-nivel.png}
+                 \caption{Diagrama de casos de uso de alto nivel}
+\end{figure}	
+
+\begin{figure}[h]
+	\centering
+        \includegraphics[width=\textwidth,keepaspectratio]{dcue-1.png}
+                 \caption{diagrama de casos de uso expandido}
+\end{figure}	
+
+\begin{figure}[h]
+	\centering
+        \includegraphics[width=\textwidth,keepaspectratio]{dcue-2.png}
+                 \caption{diagrama de casos de uso expandido}
+\end{figure}	
+
+\begin{figure}[h]
+	\centering
+        \includegraphics[width=\textwidth,keepaspectratio]{dcue-3.png}
+                 \caption{diagrama de casos de uso expandido}
+\end{figure}	
+
+\begin{figure}[h]
+	\centering
+        \includegraphics[width=\textwidth,keepaspectratio]{dcue-4.png}
+                 \caption{diagrama de casos de uso expandido}
+\end{figure}	
+\section{Modelo conceptual}
+\section{Diagramas de estados y actividades}
+\section{Diagrama de componentes}
+\section{Diagrama de clases}
+%\section{Casos de uso}
+% \subsection{} %Use case name
+% ------------------ Elaborate ----------------------------
+\section{Resumen}
+\subsection{CDN}
+CDN significa Content Delivery Network, se refiere a una red 
+de servidores, generalmente distribuídos al rededor del mundo
+conectados  a internet que se encargan de servir contenido
+estático (imágenes, video, música, pdf, html, etc). Este tipo
+de redes no implementan ninguna lógica de negocio más allá de un
+sistema de seguridad para prevenir el acceso no autorizado.
+Estos sistemas están especializados para servir este 
+contenido priorizando la velocidad de red y estabilidad de conexión.
+En el contexto de Netflix este sistema será el encargado de almacenar
+la filmoteca (inventario) y de servir el material videográfico 
+sobre la red a los usuarios finales. 
+La carga de material videográfico a este sistema está 
+fuera del alcance de este y por tanto se realiza por separado.
+\subsection{Sistema de monitoreo}
+Una plataforma Web para uso específico interno de Netflix. Únicamente
+personal interno autorizado tendrá acceso a esta app y se trata
+de un portal web que habilitará a los altos mandos de Netflix 
+monitorear el desempeño de su plataforma en todo momento, obtener
+reportes de errores, health checks de la infraestructura y demás
+información útil para realizar tareas de monitoreo.
+\subsection{Portal de administración}
+Esta plataforma, a diferencia del sistema de monitoreo será utilizada
+para realizar tareas propiamente de administración del sistema. En
+este sistema se podrá cargar material videográfico al CDN, trackear
+órdenes, revisar las suscripciones de los usuarios, editar la
+misión, visión, logo y demás información a mostrar a los usuarios
+finales. Este no debe ser forzosamente un portal web, otras
+opciones que podrían considerarse es una aplicación de escritorio
+escrita en C o un sistema basado en JavaFX.
+\subsection{Portal del usuario final}
+La plataforma web a la que los usuarios finales tendrán acceso y 
+desde donde podrán consumir el contenido de Netflix. En este portal
+pueden registrarse, iniciar sesión, revisar sus recomendaciones, 
+buscar películas, consumir el material videográfico e incluso
+cancelar su suscripción. Sin duda una pieza clave en el nuevo sistema
+de Netflix.
+\subsection{Sistema de recomendaciones}
+El sistema insignia de Netflix, un sistema basado en MachineLearning
+que ha sido el responsable de su posición y popularidad actual. Este
+sistema debe ser refinado y mejorado de modo que pueda seguir siendo
+utilizado de manera efetiva en el nuevo contexto.
+\subsection{Sistema de susbcripciones}
+El sistema de subscripciones es un sub sistema tipo backend
+que se encarga de registrar y realizar todas las operaciones
+relacionadas a las subscripciones de los clientes. Este sistema
+será el único encargado de operar la base de datos donde dichas
+transacciones estén registradas y únicamente expondrá una API
+para la interacción con el resto de componentes del sistema Netflix.
+
+\subsection{Requerimientos No Funcionales}
+\begin{itemize}
+	\item Alta disponibilidad
+	\item Alta seguridad
+	\item Alta tolerancia a los fallos
+	\item Velocidad considerable de transmisión de datos
+	\item Transacciones atómicas y rastreables
+	\item Implementación de algoritmos de encriptación para el
+		manejo de credenciales y demás información sensitiva de los
+		clientes.
+	\item El sistema cliente del usuario final debe estar 
+		garantizado su correcto funcionamiento en los browsers más
+		utilizados en el mercado.
+\end{itemize}
+
+\subsection{Requerimientos Funcionales}
+\begin{itemize}
+	\item Subir videos al CDN
+	\item Visualizar el historial y perfil de un usuario 
+		específico
+	\item Obtener métricas en tiempo real del funcionamiento del
+		sistema y su estado en cualquier momento en el tiempo t.
+	\item Capacidad de registrarse en la plataforma
+	\item Fácil navegación entre la biblioteca del portal de Netflix
+	\item Capacidad de calificar un video
+	\item Obtener recomendaciones y una landing page personalizada
+		de acuerdo a los gustos del cliente.
+	\item Habilidad para visualizar el material videográfico en alta
+		definición desde el hogar del cliente en tiempo real.
+	\item Capacidad de editar la información general de la empresa
+	\item Notificar por correo  a los usuarios de sus 
+		actividades pertinentes a su subscripcion.
+\end{itemize}
 \section{Tomando en cuenta la competencia y demanda de servicio,
       qué metodología de desarrollo de software adoptaría
       y por qué.}
