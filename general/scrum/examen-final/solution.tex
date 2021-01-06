@@ -97,7 +97,7 @@ del software.
 \section{Diagrama de clases}
 \begin{figure}[h]
 	\centering
-        \includegraphics[width=\textwidth,keepaspectratio]{classes.png}
+        \includegraphics[width=300px,keepaspectratio]{classes.png}
                  \caption{Diagrama de componentes}
 \end{figure}	
 
@@ -163,14 +163,19 @@ para la interacción con el resto de componentes del sistema Netflix.
 
 \subsection{Requerimientos No Funcionales}
 \begin{itemize}
-	\item Alta disponibilidad
-	\item Alta seguridad
-	\item Alta tolerancia a los fallos
-	\item Velocidad considerable de transmisión de datos
-	\item Transacciones atómicas y rastreables
+	\item Garantía de disponibilidad mínima del 95\% de los servidores
 	\item Implementación de algoritmos de encriptación para el
 		manejo de credenciales y demás información sensitiva de los
 		clientes.
+  \item Configurar la conectividad y seguridad a nivel de red, configurando
+          las vlans, tablas de ruteo, ACLs y demás detalles necesarios para
+                la implementación segura y eficaz de la comunicación en red.
+	\item Realizar pruebas de 360 grados para cada aplicación de software de
+          modo que se asegure su correcto funcionamiento.
+	\item Configurar sistemas de cache de IPs de modo que la entrega 
+          de contenido por red sea la más alta posible.
+	\item Todas las transacciones deben ser atómicas y rastreables
+          en todo momento.
 	\item El sistema cliente del usuario final debe estar 
 		garantizado su correcto funcionamiento en los browsers más
 		utilizados en el mercado.
@@ -178,21 +183,23 @@ para la interacción con el resto de componentes del sistema Netflix.
 
 \subsection{Requerimientos Funcionales}
 \begin{itemize}
-	\item Subir videos al CDN
-	\item Visualizar el historial y perfil de un usuario 
-		específico
-	\item Obtener métricas en tiempo real del funcionamiento del
-		sistema y su estado en cualquier momento en el tiempo t.
-	\item Capacidad de registrarse en la plataforma
-	\item Fácil navegación entre la biblioteca del portal de Netflix
 	\item Capacidad de calificar un video
 	\item Obtener recomendaciones y una landing page personalizada
 		de acuerdo a los gustos del cliente.
+	\item Fácil navegación por la biblioteca del portal de Netflix
+  \item Reportar material inapropiado
+  \item Habilidad de registrarse en la plataforma
+  \item Habilidad de cancelar la suscripción en la plataforma web
 	\item Habilidad para visualizar el material videográfico en alta
 		definición desde el hogar del cliente en tiempo real.
-	\item Capacidad de editar la información general de la empresa
+	\item Visualizar el historial de un usuario dado
+  \item Visualizar el perfil de un usuario específico
+	\item Subir videos al CDN
 	\item Notificar por correo  a los usuarios de sus 
 		actividades pertinentes a su subscripcion.
+	\item Capacidad de editar la información general de la empresa
+	\item Obtener métricas en tiempo real del funcionamiento del
+		sistema y su estado en cualquier momento en el tiempo t.
 \end{itemize}
 \section{Tomando en cuenta la competencia y demanda de servicio,
       qué metodología de desarrollo de software adoptaría
