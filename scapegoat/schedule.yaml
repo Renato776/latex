@@ -1,0 +1,61 @@
+ETICA:
+  Codigo: 0001
+  Seccion: P*
+  Inicio: 14:50 (3pm)
+  Final: 15:40 (4pm)
+  Dias: [Lu, Mi, Vi]
+  Catedratico: Rogelio Alfredo Salazar de Leon
+Sistemas Operativos 2:
+  codigo: 285
+  Seccion: A*
+  - Inicio: 19:00
+    Final: 20:40
+    Dias: [Mi]
+  - Inicio: 10:30
+    Final: 12:10
+    Dias: [Sa]
+Redes 2:
+  codigo: 975
+  Seccion: N*
+  Inicio: 13:00
+  Final: 17:10
+  Dias: [Sa]
+Bases de datos 2:
+  Codigo: 775
+  Seccion: A*
+  Inicio: 7:10
+  Final: 8:50
+  Dias: [Mi, Sa]
+Seminario 1:
+  Codigo: 797
+  Seccion: A*
+  Inicio: 7:10
+  Final: 8:50
+  Dias: [Vi]
+Análisis y Diseño de Sistemas 2:
+  Codigo: 785
+  Seccion: A*
+  - Inicio: 7:10
+    Final: 8:50
+    Dias: [Ma]
+  - Inicio: 17:00
+    Final: 19:00
+    Dias: [Ju]
+Modelación y Simulación 1:
+  Codigo: 729
+  Seccion: A*!
+  - Inicio: 7:10
+    Final: 8:50
+    Dias: [Mi,Ju]
+Sistemas Organizacionales y Gerenciales 1:
+  Codigo: 786
+  Seccion: N
+  Dias: [Ma,Ju]
+  Inicio: 19:00
+  Final: 20:40
+Practicas Finales:
+  Codigo: 2009
+  Seccion: C* --
+  Inicio: 20:40
+  Final: 21:30
+  Dias: [Mi]
